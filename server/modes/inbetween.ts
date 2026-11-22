@@ -127,14 +127,15 @@ function parsePrompt(raw: unknown, n: number, catalogs: Catalogs): Prompt {
   })
   buildIndex(answers) // hand-written answers must not clash with each other
   let source = text(r.source, `${where} source`)
+  let more = (): Answer[] => []
   if (r.catalog !== undefined) {
     const cat = catalogs.get(r.catalog)
     if (!cat) throw new Error(`${where}: no catalog "${r.catalog}"`)
     if (!alpha && cat.unit !== unit) throw new Error(`${where}: catalog "${r.catalog}" is in ${cat.unit}, the prompt in ${unit}`)
-    answers.push(...fromCatalog(cat.entries, answers, { lo, hi, alpha, scale }))
+    more = () => fromCatalog(cat.entries, answers, { lo, hi, alpha, scale })
     source += '. More answers from Wikidata.'
   }
-  const index = buildIndex(answers)
+  const index = lazyIndex(() => buildIndex([...answers, ...more()]))
   const find = (name: unknown, what: string) => {
     const i = answers.findIndex((a) => a.name === name)
     if (i < 0 || !answers[i].tier) throw new Error(`${where}: ${what} must name an in-range answer`)
@@ -145,10 +146,29 @@ function parsePrompt(raw: unknown, n: number, catalogs: Catalogs): Prompt {
   if (answers[rarest].tier !== 'milestone') throw new Error(`${where}: rarest must be a milestone answer`)
 
   return {
-    category, title, unit, scale, lo, hi, common, rarest, index,
+    category, title, unit, scale, lo, hi, common, rarest,
+    get index() { return index() },
     question: text(r.question, `${where} question`),
     words: [text(r.words[0], `${where} words`), text(r.words[1], `${where} words`)],
     source,
+  }
+}
+
+/** Built answer lists, oldest first. Only today and the days either side are playable, so 3 days' prompts suffice. */
+const built: { reset(): void }[] = []
+const MAX_BUILT = 3 * PROMPTS
+
+/** A prompt's full answer list (up to tens of thousands with a catalog) is built when first played, not at boot. */
+function lazyIndex(make: () => AnswerIndex<Answer>) {
+  let index: AnswerIndex<Answer> | undefined
+  const slot = { reset: () => (index = undefined) }
+  return () => {
+    if (!index) {
+      index = make()
+      built.push(slot)
+      if (built.length > MAX_BUILT) built.shift()!.reset()
+    }
+    return index
   }
 }
 

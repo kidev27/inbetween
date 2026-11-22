@@ -51,3 +51,11 @@ it('rejects a missing catalog or a unit mismatch', () => {
   expect(() => m.parse(day({ catalog: 'nope' }))).toThrow(/no catalog "nope"/)
   expect(() => m.parse(day({ catalog: 'things', unit: 'm' }))).toThrow(/catalog "things" is in kg/)
 })
+
+it('builds a prompt\'s answer list when played and keeps only the latest three days', () => {
+  const days = Array.from({ length: 4 }, () => m.parse(day({ catalog: 'things' })) as unknown as { prompts: { index: unknown }[] })
+  const first = days[0].prompts[0].index
+  expect(days[0].prompts[0].index).toBe(first) // cached
+  for (const d of days.slice(1)) for (const q of d.prompts) void q.index // 21 more prompts
+  expect(days[0].prompts[0].index).not.toBe(first) // evicted, rebuilt on demand
+})
