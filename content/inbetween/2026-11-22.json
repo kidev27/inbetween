@@ -213,6 +213,7 @@
           "common": "Japan",
           "rarest": "Ethiopia",
           "source": "UN World Population Prospects 2024, rounded",
+          "catalog": "countries",
           "answers": [
             {
               "name": "Japan",
@@ -440,6 +441,7 @@
           "common": "Space Needle",
           "rarest": "Gateway Arch",
           "source": "Heights from Wikipedia, rounded to the metre",
+          "catalog": "structures",
           "answers": [
             {
               "name": "Space Needle",
@@ -753,6 +755,7 @@
           "common": "Light bulb",
           "rarest": "Escalator",
           "source": "Dates of first working version or patent, from Wikipedia",
+          "catalog": "inventions",
           "answers": [
             {
               "name": "Light bulb",
@@ -945,6 +948,7 @@
           "common": "Mango",
           "rarest": "Kumquat",
           "source": "Alphabetical order of the English names",
+          "catalog": "fruits",
           "answers": [
             {
               "name": "Lemon",
@@ -1066,6 +1070,7 @@
           "common": "Mount Elbrus",
           "rarest": "Pico de Orizaba",
           "source": "Summit heights from Wikipedia",
+          "catalog": "mountains",
           "answers": [
             {
               "name": "Mount Elbrus",

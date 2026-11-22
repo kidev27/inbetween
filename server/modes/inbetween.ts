@@ -2,6 +2,8 @@ import {
   alphaKey, CATEGORIES, CLOSE, CLOSE_POINTS, GRACE_MS, isTier, MAX_ANSWER_LENGTH, meta, PROMPTS, TIERS, TIME_MS,
   type Answered, type Ask, type Category, type InBetweenEvent, type InBetweenView, type Outcome, type Scale, type Tier,
 } from '../../src/shared/modes/inbetween.ts'
+import { fileURLToPath } from 'node:url'
+import { loadCatalogs, type CatalogEntry, type Catalogs } from '../catalogs.ts'
 import { buildIndex, key, match, type AnswerIndex } from '../match.ts'
 import type { ServerMode } from '../mode.ts'
 
@@ -11,7 +13,16 @@ interface Answer {
   value: number
   tier?: Tier
   fact?: string
+  fuzzy?: boolean
 }
+
+/**
+ * Catalog answers get tiers from fame: how many Wikipedias have an article on them. Absolute, not
+ * a rank, so a catalog of 20,000 mountains doesn't make its 2,000th best known a common pick.
+ */
+export const FAME_TIERS: [number, Tier][] = [[150, 'pin'], [60, 'ruler'], [20, 'yardstick'], [0, 'milestone']]
+/** Catalog answers this well known (Wikipedias with an article) also match with a small typo. */
+export const FUZZY_FAME = 20
 
 interface Prompt {
   category: Category
@@ -57,7 +68,7 @@ const text = (v: unknown, what: string): string => {
   return v
 }
 
-const inRange = (p: Pick<Prompt, 'lo' | 'hi'>, v: number) => v > p.lo.value && v < p.hi.value
+const inRange = (p: { lo: { value: number }; hi: { value: number } }, v: number) => v > p.lo.value && v < p.hi.value
 
 /** Hit, close call or out of range for a matched answer. */
 function judge(p: Prompt, i: number): Rec {
@@ -75,7 +86,7 @@ function judge(p: Prompt, i: number): Rec {
   return { outcome: 'out', i, points: 0, side }
 }
 
-function parsePrompt(raw: unknown, n: number): Prompt {
+function parsePrompt(raw: unknown, n: number, catalogs: Catalogs): Prompt {
   const r = raw as Record<string, any>
   const title = text(r?.title, `title of prompt ${n}`)
   const where = `"${title}"`
@@ -112,7 +123,16 @@ function parsePrompt(raw: unknown, n: number): Prompt {
       throw new Error(`${where}: "${name}" clashes with a limit's name`)
     return { name, aliases: a.aliases ?? [], value, tier: a.tier, fact: a.fact || undefined }
   })
-  const index = buildIndex(answers) // throws on duplicate names or aliases
+  buildIndex(answers) // hand-written answers must not clash with each other
+  let source = text(r.source, `${where} source`)
+  if (r.catalog !== undefined) {
+    const cat = catalogs.get(r.catalog)
+    if (!cat) throw new Error(`${where}: no catalog "${r.catalog}"`)
+    if (!alpha && cat.unit !== unit) throw new Error(`${where}: catalog "${r.catalog}" is in ${cat.unit}, the prompt in ${unit}`)
+    answers.push(...fromCatalog(cat.entries, answers, { lo, hi, alpha, scale }))
+    source += '. More answers from Wikidata.'
+  }
+  const index = buildIndex(answers)
   const find = (name: unknown, what: string) => {
     const i = answers.findIndex((a) => a.name === name)
     if (i < 0 || !answers[i].tier) throw new Error(`${where}: ${what} must name an in-range answer`)
@@ -126,8 +146,33 @@ function parsePrompt(raw: unknown, n: number): Prompt {
     category, title, unit, scale, lo, hi, common, rarest, index,
     question: text(r.question, `${where} question`),
     words: [text(r.words[0], `${where} words`), text(r.words[1], `${where} words`)],
-    source: text(r.source, `${where} source`),
+    source,
   }
+}
+
+/**
+ * Catalog entries to add under the hand-written answers. An entry sharing any name or alias with
+ * a hand answer or a limit is the same thing and is skipped; an alias clashing with an earlier
+ * (better known) entry is dropped. In-range entries are tiered by fame rank.
+ */
+function fromCatalog(
+  entries: CatalogEntry[], hand: Answer[],
+  p: { lo: { value: number; key: string }; hi: { value: number; key: string }; alpha: boolean; scale: Scale },
+): Answer[] {
+  const same = new Set([p.lo.key, p.hi.key, ...hand.flatMap((a) => [a.name, ...a.aliases].map(key))])
+  const taken = new Set(same)
+  const out: (Answer & { fame: number })[] = []
+  for (const [name, raw, fame, aliases] of entries) {
+    const k = key(name)
+    if (!k || taken.has(k) || aliases.some((s) => same.has(key(s)))) continue
+    const value = p.alpha ? alphaKey(name) : raw
+    if (!Number.isFinite(value) || (p.scale === 'log' && value <= 0)) continue
+    const own = [...new Set(aliases.map(key))].filter((a) => a && a !== k && !taken.has(a))
+    ;[k, ...own].forEach((x) => taken.add(x))
+    out.push({ name, aliases: own, value, fame, fuzzy: fame >= FUZZY_FAME })
+  }
+  for (const a of out) if (inRange(p, a.value)) a.tier = FAME_TIERS.find(([min]) => a.fame >= min)![1]
+  return out.map(({ fame: _f, ...a }) => a)
 }
 
 /**
@@ -137,10 +182,10 @@ function parsePrompt(raw: unknown, n: number): Prompt {
  * tier; out-of-range ones (listed so they get a proper "too tall" reveal) must not have one.
  * With unit "alpha" values come from the names. Validated at boot, so bad content stops the server.
  */
-function parse(raw: unknown): Puzzle {
+const parse = (catalogs: Catalogs) => (raw: unknown): Puzzle => {
   const prompts = (raw as { prompts?: unknown })?.prompts
   if (!Array.isArray(prompts) || prompts.length !== PROMPTS) throw new Error(`needs exactly ${PROMPTS} prompts`)
-  return { prompts: prompts.map((p, i) => parsePrompt(p, i + 1)) }
+  return { prompts: prompts.map((p, i) => parsePrompt(p, i + 1, catalogs)) }
 }
 
 const ask = (p: Prompt, index: number): Ask => ({
@@ -193,7 +238,8 @@ function apply(s: State, e: InBetweenEvent, p: Puzzle, now: number): State {
 
 const total = (s: State) => s.recs.reduce((n, r) => n + r.points, 0)
 
-export const inbetween: ServerMode<Puzzle, State, InBetweenEvent, InBetweenView> = {
+/** The mode with a given set of catalogs (tests pass their own). */
+export const makeInbetween = (catalogs: Catalogs): ServerMode<Puzzle, State, InBetweenEvent, InBetweenView> => ({
   meta,
   eventSchema: {
     type: 'object',
@@ -207,7 +253,7 @@ export const inbetween: ServerMode<Puzzle, State, InBetweenEvent, InBetweenView>
     if: { properties: { type: { const: 'answer' } } },
     then: { required: ['text'] },
   },
-  parse,
+  parse: parse(catalogs),
   prompt: () => `${PROMPTS} prompts`,
   start: () => ({ recs: [], deadline: null, retried: false, note: null }),
   apply,
@@ -226,4 +272,6 @@ export const inbetween: ServerMode<Puzzle, State, InBetweenEvent, InBetweenView>
     const bar = (r: Rec) => (r.tier ? TIERS[r.tier].bar : r.outcome === 'close' ? TIERS.pin.bar : '·')
     return { score: total(s), outcome: 'finished', glyph: s.recs.map(bar).join('') }
   },
-}
+})
+
+export const inbetween = makeInbetween(loadCatalogs(fileURLToPath(new URL('../../content/catalogs', import.meta.url))))

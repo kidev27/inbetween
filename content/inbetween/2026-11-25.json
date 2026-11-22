@@ -23,6 +23,7 @@
           "common": "Compass",
           "rarest": "Paper money",
           "source": "Dates of first known use, from Wikipedia; early dates are approximate",
+          "catalog": "inventions",
           "answers": [
             {
               "name": "Compass",
@@ -172,6 +173,7 @@
           "common": "Leaning Tower of Pisa",
           "rarest": "Petra",
           "source": "Heights from Wikipedia, rounded to the metre",
+          "catalog": "structures",
           "answers": [
             {
               "name": "Leaning Tower of Pisa",
@@ -529,6 +531,7 @@
           "common": "Netherlands",
           "rarest": "Bolivia",
           "source": "UN World Population Prospects 2024, rounded",
+          "catalog": "countries",
           "answers": [
             {
               "name": "Netherlands",
@@ -1048,6 +1051,7 @@
           "common": "Mount St Helens",
           "rarest": "Mount Pelee",
           "source": "Summit heights from Wikipedia",
+          "catalog": "mountains",
           "answers": [
             {
               "name": "Mount St Helens",

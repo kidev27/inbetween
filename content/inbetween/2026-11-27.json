@@ -207,6 +207,7 @@
           "common": "China",
           "rarest": "Nigeria",
           "source": "UN World Population Prospects 2024, rounded",
+          "catalog": "countries",
           "answers": [
             {
               "name": "China",
@@ -286,6 +287,7 @@
           "common": "Steam locomotive",
           "rarest": "Braille",
           "source": "Dates of first working version or patent, from Wikipedia",
+          "catalog": "inventions",
           "answers": [
             {
               "name": "Steam locomotive",
@@ -493,6 +495,7 @@
           "common": "Statue of Liberty",
           "rarest": "Galata Tower",
           "source": "Heights from Wikipedia, rounded to the metre",
+          "catalog": "structures",
           "answers": [
             {
               "name": "Statue of Liberty",
@@ -637,6 +640,7 @@
           "common": "Gymnastics",
           "rarest": "Hapkido",
           "source": "Alphabetical order of the English names",
+          "catalog": "sports",
           "answers": [
             {
               "name": "Gymnastics",
@@ -746,6 +750,7 @@
           "common": "Celery",
           "rarest": "Kohlrabi",
           "source": "Alphabetical order of the English names",
+          "catalog": "vegetables",
           "answers": [
             {
               "name": "Celery",
@@ -919,6 +924,7 @@
           "common": "Mount Etna",
           "rarest": "Musala",
           "source": "Summit heights from Wikipedia",
+          "catalog": "mountains",
           "answers": [
             {
               "name": "Mount Etna",

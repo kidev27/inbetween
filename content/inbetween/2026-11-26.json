@@ -23,6 +23,7 @@
           "common": "Australia",
           "rarest": "Bhutan",
           "source": "UN World Population Prospects 2024, rounded",
+          "catalog": "countries",
           "answers": [
             {
               "name": "Australia",
@@ -314,6 +315,7 @@
           "common": "Car",
           "rarest": "Contact lens",
           "source": "Dates of first working version or patent, from Wikipedia",
+          "catalog": "inventions",
           "answers": [
             {
               "name": "Car",
@@ -733,6 +735,7 @@
           "common": "Mexico",
           "rarest": "Nauru",
           "source": "Alphabetical order of the English short names",
+          "catalog": "countries",
           "answers": [
             {
               "name": "Mexico",
@@ -849,6 +852,7 @@
           "common": "Victoria Falls",
           "rarest": "Tugela Falls",
           "source": "Total drop heights from Wikipedia",
+          "catalog": "waterfalls",
           "answers": [
             {
               "name": "Victoria Falls",
@@ -1000,6 +1004,7 @@
           "common": "Internet",
           "rarest": "Post-it note",
           "source": "Dates of first working version or launch, from Wikipedia",
+          "catalog": "inventions",
           "answers": [
             {
               "name": "Internet",
@@ -1255,6 +1260,7 @@
           "common": "Denali",
           "rarest": "Cotopaxi",
           "source": "Summit heights from Wikipedia",
+          "catalog": "mountains",
           "answers": [
             {
               "name": "Denali",

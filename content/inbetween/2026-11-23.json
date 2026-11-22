@@ -23,6 +23,7 @@
           "common": "United Kingdom",
           "rarest": "Uzbekistan",
           "source": "UN World Population Prospects 2024, rounded",
+          "catalog": "countries",
           "answers": [
             {
               "name": "United Kingdom",
@@ -499,6 +500,7 @@
           "common": "Telescope",
           "rarest": "Slide rule",
           "source": "Dates of first known working version, from Wikipedia",
+          "catalog": "inventions",
           "answers": [
             {
               "name": "Telescope",
@@ -662,6 +664,7 @@
           "common": "Big Ben",
           "rarest": "Wembley Arch",
           "source": "Heights from Wikipedia, rounded to the metre",
+          "catalog": "structures",
           "answers": [
             {
               "name": "Big Ben",
@@ -978,6 +981,7 @@
           "common": "Purple",
           "rarest": "Puce",
           "source": "Alphabetical order of the English names",
+          "catalog": "colours",
           "answers": [
             {
               "name": "Grey",
@@ -1156,6 +1160,7 @@
           "common": "Matterhorn",
           "rarest": "Toubkal",
           "source": "Summit heights from Wikipedia",
+          "catalog": "mountains",
           "answers": [
             {
               "name": "Matterhorn",

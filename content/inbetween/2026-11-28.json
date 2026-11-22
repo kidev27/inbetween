@@ -23,6 +23,7 @@
           "common": "Netherlands",
           "rarest": "Paraguay",
           "source": "UN World Population Prospects 2024, rounded",
+          "catalog": "countries",
           "answers": [
             {
               "name": "Netherlands",
@@ -510,6 +511,7 @@
           "common": "Golden Gate Bridge",
           "rarest": "Sky Tower",
           "source": "Heights to the tip, from Wikipedia",
+          "catalog": "structures",
           "answers": [
             {
               "name": "Golden Gate Bridge",
@@ -666,6 +668,7 @@
           "common": "Mobile phone",
           "rarest": "Hovercraft",
           "source": "Dates of first working version or patent, from Wikipedia",
+          "catalog": "inventions",
           "answers": [
             {
               "name": "Mobile phone",
@@ -915,6 +918,7 @@
           "common": "Flute",
           "rarest": "Erhu",
           "source": "Alphabetical order of the English names",
+          "catalog": "instruments",
           "answers": [
             {
               "name": "Flute",
@@ -1238,6 +1242,7 @@
           "common": "Matterhorn",
           "rarest": "Klyuchevskaya Sopka",
           "source": "Summit heights from Wikipedia",
+          "catalog": "mountains",
           "answers": [
             {
               "name": "Matterhorn",
