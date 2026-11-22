@@ -1,0 +1,1401 @@
+{
+  "rounds": [
+    {
+      "prompts": [
+        {
+          "category": "population",
+          "title": "Countries by population",
+          "question": "Name a country with more people than Iceland but fewer than Canada.",
+          "unit": "million",
+          "scale": "log",
+          "words": [
+            "many people",
+            "few people"
+          ],
+          "lo": {
+            "name": "Iceland",
+            "value": 0.39
+          },
+          "hi": {
+            "name": "Canada",
+            "value": 40
+          },
+          "common": "Australia",
+          "rarest": "Bhutan",
+          "source": "UN World Population Prospects 2024, rounded",
+          "answers": [
+            {
+              "name": "Australia",
+              "value": 27,
+              "tier": "pin"
+            },
+            {
+              "name": "Netherlands",
+              "value": 18,
+              "tier": "pin",
+              "aliases": [
+                "holland"
+              ]
+            },
+            {
+              "name": "Sweden",
+              "value": 10.6,
+              "tier": "pin"
+            },
+            {
+              "name": "Switzerland",
+              "value": 8.9,
+              "tier": "pin"
+            },
+            {
+              "name": "Norway",
+              "value": 5.5,
+              "tier": "pin"
+            },
+            {
+              "name": "Denmark",
+              "value": 6,
+              "tier": "pin"
+            },
+            {
+              "name": "Ireland",
+              "value": 5.3,
+              "tier": "pin"
+            },
+            {
+              "name": "New Zealand",
+              "value": 5.2,
+              "tier": "pin"
+            },
+            {
+              "name": "Belgium",
+              "value": 12,
+              "tier": "ruler"
+            },
+            {
+              "name": "Portugal",
+              "value": 10.4,
+              "tier": "ruler"
+            },
+            {
+              "name": "Greece",
+              "value": 10.4,
+              "tier": "ruler"
+            },
+            {
+              "name": "Austria",
+              "value": 9.1,
+              "tier": "ruler"
+            },
+            {
+              "name": "Finland",
+              "value": 5.6,
+              "tier": "ruler"
+            },
+            {
+              "name": "Israel",
+              "value": 9.8,
+              "tier": "ruler"
+            },
+            {
+              "name": "Cuba",
+              "value": 11,
+              "tier": "ruler"
+            },
+            {
+              "name": "Taiwan",
+              "value": 23,
+              "tier": "ruler"
+            },
+            {
+              "name": "Chile",
+              "value": 20,
+              "tier": "ruler"
+            },
+            {
+              "name": "Jamaica",
+              "value": 2.8,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Singapore",
+              "value": 6,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Hungary",
+              "value": 9.6,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Croatia",
+              "value": 3.9,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Poland",
+              "value": 37,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Peru",
+              "value": 34,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Malaysia",
+              "value": 35,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Saudi Arabia",
+              "value": 33,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Morocco",
+              "value": 38,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Estonia",
+              "value": 1.3,
+              "tier": "milestone"
+            },
+            {
+              "name": "Luxembourg",
+              "value": 0.67,
+              "tier": "milestone"
+            },
+            {
+              "name": "Malta",
+              "value": 0.54,
+              "tier": "milestone"
+            },
+            {
+              "name": "Montenegro",
+              "value": 0.62,
+              "tier": "milestone"
+            },
+            {
+              "name": "Bhutan",
+              "value": 0.79,
+              "tier": "milestone",
+              "fact": "Bhutan measures Gross National Happiness alongside its economy."
+            },
+            {
+              "name": "Fiji",
+              "value": 0.93,
+              "tier": "milestone"
+            },
+            {
+              "name": "Cyprus",
+              "value": 1.3,
+              "tier": "milestone"
+            },
+            {
+              "name": "Mongolia",
+              "value": 3.5,
+              "tier": "milestone"
+            },
+            {
+              "name": "Uruguay",
+              "value": 3.4,
+              "tier": "milestone"
+            },
+            {
+              "name": "Uzbekistan",
+              "value": 36,
+              "tier": "milestone"
+            },
+            {
+              "name": "Maldives",
+              "value": 0.52,
+              "tier": "milestone"
+            },
+            {
+              "name": "Bahamas",
+              "value": 0.4,
+              "tier": "milestone",
+              "aliases": [
+                "the bahamas"
+              ]
+            },
+            {
+              "name": "Belize",
+              "value": 0.41,
+              "tier": "milestone"
+            },
+            {
+              "name": "Monaco",
+              "value": 0.04
+            },
+            {
+              "name": "Vatican City",
+              "value": 0.0008,
+              "aliases": [
+                "vatican",
+                "the vatican"
+              ]
+            },
+            {
+              "name": "Liechtenstein",
+              "value": 0.04
+            },
+            {
+              "name": "San Marino",
+              "value": 0.03
+            },
+            {
+              "name": "Andorra",
+              "value": 0.08
+            },
+            {
+              "name": "United Kingdom",
+              "value": 69,
+              "aliases": [
+                "uk",
+                "britain"
+              ]
+            },
+            {
+              "name": "Germany",
+              "value": 84
+            },
+            {
+              "name": "Japan",
+              "value": 124
+            },
+            {
+              "name": "United States",
+              "value": 340,
+              "aliases": [
+                "usa",
+                "us",
+                "america"
+              ]
+            },
+            {
+              "name": "Afghanistan",
+              "value": 42
+            },
+            {
+              "name": "Argentina",
+              "value": 46
+            },
+            {
+              "name": "Spain",
+              "value": 48
+            },
+            {
+              "name": "Barbados",
+              "value": 0.28
+            }
+          ]
+        },
+        {
+          "category": "year",
+          "title": "Inventions by year",
+          "question": "Name an invention from after the light bulb but before the first airplane.",
+          "unit": "year",
+          "scale": "linear",
+          "words": [
+            "late",
+            "early"
+          ],
+          "lo": {
+            "name": "Light bulb",
+            "value": 1879
+          },
+          "hi": {
+            "name": "Airplane",
+            "value": 1903
+          },
+          "common": "Car",
+          "rarest": "Contact lens",
+          "source": "Dates of first working version or patent, from Wikipedia",
+          "answers": [
+            {
+              "name": "Car",
+              "value": 1886,
+              "tier": "pin",
+              "aliases": [
+                "automobile",
+                "motor car"
+              ]
+            },
+            {
+              "name": "Radio",
+              "value": 1895,
+              "tier": "pin"
+            },
+            {
+              "name": "X-ray",
+              "value": 1895,
+              "tier": "ruler",
+              "aliases": [
+                "xray",
+                "x ray"
+              ]
+            },
+            {
+              "name": "Movie camera",
+              "value": 1891,
+              "tier": "ruler",
+              "aliases": [
+                "film camera",
+                "cinema"
+              ]
+            },
+            {
+              "name": "Motorcycle",
+              "value": 1885,
+              "tier": "ruler",
+              "aliases": [
+                "motorbike"
+              ]
+            },
+            {
+              "name": "Gramophone",
+              "value": 1887,
+              "tier": "ruler",
+              "aliases": [
+                "record player"
+              ]
+            },
+            {
+              "name": "Vacuum cleaner",
+              "value": 1901,
+              "tier": "ruler",
+              "aliases": [
+                "vacuum"
+              ]
+            },
+            {
+              "name": "Escalator",
+              "value": 1896,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Ferris wheel",
+              "value": 1893,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Aspirin",
+              "value": 1897,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Diesel engine",
+              "value": 1893,
+              "tier": "yardstick",
+              "aliases": [
+                "diesel"
+              ]
+            },
+            {
+              "name": "Air conditioner",
+              "value": 1902,
+              "tier": "yardstick",
+              "aliases": [
+                "air conditioning"
+              ]
+            },
+            {
+              "name": "Pneumatic tyre",
+              "value": 1888,
+              "tier": "yardstick",
+              "aliases": [
+                "tyre",
+                "tire",
+                "pneumatic tire"
+              ]
+            },
+            {
+              "name": "Teddy bear",
+              "value": 1902,
+              "tier": "yardstick",
+              "fact": "The teddy bear is named after US President Theodore Roosevelt."
+            },
+            {
+              "name": "Dishwasher",
+              "value": 1886,
+              "tier": "milestone"
+            },
+            {
+              "name": "Fountain pen",
+              "value": 1884,
+              "tier": "milestone"
+            },
+            {
+              "name": "Roller coaster",
+              "value": 1884,
+              "tier": "milestone",
+              "aliases": [
+                "rollercoaster"
+              ]
+            },
+            {
+              "name": "Jukebox",
+              "value": 1889,
+              "tier": "milestone"
+            },
+            {
+              "name": "Coca-Cola",
+              "value": 1886,
+              "tier": "milestone",
+              "aliases": [
+                "coke",
+                "coca cola"
+              ]
+            },
+            {
+              "name": "Contact lens",
+              "value": 1888,
+              "tier": "milestone",
+              "aliases": [
+                "contact lenses",
+                "contacts"
+              ],
+              "fact": "The first contact lenses, in 1888, were made of heavy blown glass."
+            },
+            {
+              "name": "Telephone",
+              "value": 1876,
+              "aliases": [
+                "phone"
+              ]
+            },
+            {
+              "name": "Television",
+              "value": 1927,
+              "aliases": [
+                "tv"
+              ]
+            },
+            {
+              "name": "Penicillin",
+              "value": 1928
+            },
+            {
+              "name": "Phonograph",
+              "value": 1877
+            },
+            {
+              "name": "Typewriter",
+              "value": 1868
+            },
+            {
+              "name": "Bicycle",
+              "value": 1817,
+              "aliases": [
+                "bike"
+              ]
+            },
+            {
+              "name": "Crayons",
+              "value": 1903,
+              "aliases": [
+                "crayon"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "weight",
+          "title": "Animals by weight",
+          "question": "Name an animal heavier than a lion but lighter than a hippo.",
+          "unit": "kg",
+          "scale": "log",
+          "words": [
+            "heavy",
+            "light"
+          ],
+          "lo": {
+            "name": "Lion",
+            "value": 190
+          },
+          "hi": {
+            "name": "Hippo",
+            "value": 1500
+          },
+          "common": "Horse",
+          "rarest": "Giant tortoise",
+          "source": "Typical adult weights from Wikipedia species articles",
+          "answers": [
+            {
+              "name": "Horse",
+              "value": 500,
+              "tier": "pin"
+            },
+            {
+              "name": "Cow",
+              "value": 700,
+              "tier": "pin",
+              "aliases": [
+                "bull"
+              ]
+            },
+            {
+              "name": "Polar bear",
+              "value": 450,
+              "tier": "pin"
+            },
+            {
+              "name": "Giraffe",
+              "value": 1100,
+              "tier": "ruler"
+            },
+            {
+              "name": "Grizzly bear",
+              "value": 270,
+              "tier": "ruler",
+              "aliases": [
+                "brown bear",
+                "grizzly"
+              ]
+            },
+            {
+              "name": "Tiger",
+              "value": 220,
+              "tier": "ruler"
+            },
+            {
+              "name": "Moose",
+              "value": 600,
+              "tier": "ruler"
+            },
+            {
+              "name": "Bison",
+              "value": 900,
+              "tier": "ruler",
+              "aliases": [
+                "buffalo"
+              ]
+            },
+            {
+              "name": "Camel",
+              "value": 600,
+              "tier": "ruler"
+            },
+            {
+              "name": "Zebra",
+              "value": 350,
+              "tier": "ruler"
+            },
+            {
+              "name": "Walrus",
+              "value": 1200,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Great white shark",
+              "value": 1100,
+              "tier": "yardstick",
+              "aliases": [
+                "great white"
+              ]
+            },
+            {
+              "name": "Saltwater crocodile",
+              "value": 1000,
+              "tier": "yardstick",
+              "aliases": [
+                "crocodile",
+                "croc"
+              ]
+            },
+            {
+              "name": "Elk",
+              "value": 300,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Donkey",
+              "value": 250,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Yak",
+              "value": 800,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Manatee",
+              "value": 500,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Alligator",
+              "value": 360,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Dolphin",
+              "value": 200,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Sea lion",
+              "value": 300,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Okapi",
+              "value": 250,
+              "tier": "milestone"
+            },
+            {
+              "name": "Water buffalo",
+              "value": 700,
+              "tier": "milestone"
+            },
+            {
+              "name": "Leatherback turtle",
+              "value": 600,
+              "tier": "milestone",
+              "aliases": [
+                "leatherback"
+              ]
+            },
+            {
+              "name": "Kodiak bear",
+              "value": 600,
+              "tier": "milestone"
+            },
+            {
+              "name": "Beluga",
+              "value": 1400,
+              "tier": "milestone",
+              "aliases": [
+                "beluga whale"
+              ]
+            },
+            {
+              "name": "Giant tortoise",
+              "value": 250,
+              "tier": "milestone",
+              "aliases": [
+                "galapagos tortoise",
+                "tortoise"
+              ],
+              "fact": "Galápagos giant tortoises can live for more than 100 years."
+            },
+            {
+              "name": "Gorilla",
+              "value": 160
+            },
+            {
+              "name": "Ostrich",
+              "value": 120
+            },
+            {
+              "name": "Elephant",
+              "value": 6000
+            },
+            {
+              "name": "Rhinoceros",
+              "value": 2300,
+              "aliases": [
+                "rhino"
+              ]
+            },
+            {
+              "name": "Human",
+              "value": 62,
+              "aliases": [
+                "person"
+              ]
+            },
+            {
+              "name": "Panda",
+              "value": 100
+            }
+          ]
+        },
+        {
+          "category": "alpha",
+          "title": "Countries, A to Z",
+          "question": "Name a country that comes after Malta but before Nepal in the alphabet.",
+          "unit": "alpha",
+          "scale": "linear",
+          "words": [
+            "late",
+            "early"
+          ],
+          "lo": {
+            "name": "Malta"
+          },
+          "hi": {
+            "name": "Nepal"
+          },
+          "common": "Mexico",
+          "rarest": "Nauru",
+          "source": "Alphabetical order of the English short names",
+          "answers": [
+            {
+              "name": "Mexico",
+              "tier": "pin"
+            },
+            {
+              "name": "Morocco",
+              "tier": "pin"
+            },
+            {
+              "name": "Monaco",
+              "tier": "ruler"
+            },
+            {
+              "name": "Mongolia",
+              "tier": "ruler"
+            },
+            {
+              "name": "Mozambique",
+              "tier": "ruler"
+            },
+            {
+              "name": "Myanmar",
+              "tier": "yardstick",
+              "aliases": [
+                "burma"
+              ]
+            },
+            {
+              "name": "Namibia",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Mauritius",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Moldova",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Montenegro",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Mauritania",
+              "tier": "milestone"
+            },
+            {
+              "name": "Micronesia",
+              "tier": "milestone"
+            },
+            {
+              "name": "Nauru",
+              "tier": "milestone",
+              "fact": "Nauru has no official capital city."
+            },
+            {
+              "name": "Malaysia"
+            },
+            {
+              "name": "Maldives"
+            },
+            {
+              "name": "Mali"
+            },
+            {
+              "name": "Madagascar"
+            },
+            {
+              "name": "Malawi"
+            },
+            {
+              "name": "Netherlands"
+            },
+            {
+              "name": "New Zealand"
+            },
+            {
+              "name": "Nigeria"
+            },
+            {
+              "name": "Norway"
+            },
+            {
+              "name": "Japan"
+            },
+            {
+              "name": "Kenya"
+            },
+            {
+              "name": "Peru"
+            }
+          ]
+        },
+        {
+          "category": "landmark",
+          "title": "Waterfalls by height",
+          "question": "Name a waterfall taller than Niagara Falls but shorter than Angel Falls.",
+          "unit": "m",
+          "scale": "log",
+          "words": [
+            "tall",
+            "short"
+          ],
+          "lo": {
+            "name": "Niagara Falls",
+            "value": 51
+          },
+          "hi": {
+            "name": "Angel Falls",
+            "value": 979
+          },
+          "common": "Victoria Falls",
+          "rarest": "Tugela Falls",
+          "source": "Total drop heights from Wikipedia",
+          "answers": [
+            {
+              "name": "Victoria Falls",
+              "value": 108,
+              "tier": "pin",
+              "fact": "Victoria Falls is often called the largest sheet of falling water in the world."
+            },
+            {
+              "name": "Yosemite Falls",
+              "value": 739,
+              "tier": "ruler"
+            },
+            {
+              "name": "Iguazu Falls",
+              "value": 82,
+              "tier": "ruler",
+              "aliases": [
+                "iguacu falls",
+                "iguazu"
+              ]
+            },
+            {
+              "name": "Multnomah Falls",
+              "value": 189,
+              "tier": "yardstick",
+              "aliases": [
+                "multnomah"
+              ]
+            },
+            {
+              "name": "Sutherland Falls",
+              "value": 580,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Bridalveil Fall",
+              "value": 188,
+              "tier": "yardstick",
+              "aliases": [
+                "bridalveil falls"
+              ]
+            },
+            {
+              "name": "Skogafoss",
+              "value": 60,
+              "tier": "yardstick",
+              "aliases": [
+                "skógafoss"
+              ]
+            },
+            {
+              "name": "Seljalandsfoss",
+              "value": 60,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Tugela Falls",
+              "value": 948,
+              "tier": "milestone",
+              "aliases": [
+                "tugela"
+              ],
+              "fact": "Some surveys say Tugela Falls is taller than Angel Falls."
+            },
+            {
+              "name": "Kaieteur Falls",
+              "value": 226,
+              "tier": "milestone",
+              "aliases": [
+                "kaieteur"
+              ]
+            },
+            {
+              "name": "Gocta Falls",
+              "value": 771,
+              "tier": "milestone",
+              "aliases": [
+                "gocta"
+              ]
+            },
+            {
+              "name": "Jog Falls",
+              "value": 253,
+              "tier": "milestone"
+            },
+            {
+              "name": "Krimml Falls",
+              "value": 380,
+              "tier": "milestone",
+              "aliases": [
+                "krimml waterfalls"
+              ]
+            },
+            {
+              "name": "Staubbach Falls",
+              "value": 297,
+              "tier": "milestone",
+              "aliases": [
+                "staubbach"
+              ]
+            },
+            {
+              "name": "Plitvice Falls",
+              "value": 78,
+              "tier": "milestone",
+              "aliases": [
+                "veliki slap"
+              ]
+            },
+            {
+              "name": "Gullfoss",
+              "value": 32
+            },
+            {
+              "name": "Rhine Falls",
+              "value": 23
+            },
+            {
+              "name": "Dettifoss",
+              "value": 44
+            },
+            {
+              "name": "Havasu Falls",
+              "value": 30,
+              "aliases": [
+                "havasu"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "year",
+          "title": "Inventions by year",
+          "question": "Name an invention from after the Moon landing but before the iPhone.",
+          "unit": "year",
+          "scale": "linear",
+          "words": [
+            "late",
+            "early"
+          ],
+          "lo": {
+            "name": "Moon landing",
+            "value": 1969
+          },
+          "hi": {
+            "name": "iPhone",
+            "value": 2007
+          },
+          "common": "Internet",
+          "rarest": "Post-it note",
+          "source": "Dates of first working version or launch, from Wikipedia",
+          "answers": [
+            {
+              "name": "Internet",
+              "value": 1983,
+              "tier": "pin"
+            },
+            {
+              "name": "World Wide Web",
+              "value": 1989,
+              "tier": "pin",
+              "aliases": [
+                "www",
+                "the web",
+                "web"
+              ]
+            },
+            {
+              "name": "Mobile phone",
+              "value": 1973,
+              "tier": "pin",
+              "aliases": [
+                "cell phone",
+                "cellphone"
+              ]
+            },
+            {
+              "name": "Personal computer",
+              "value": 1975,
+              "tier": "ruler",
+              "aliases": [
+                "pc",
+                "home computer"
+              ]
+            },
+            {
+              "name": "Email",
+              "value": 1971,
+              "tier": "ruler",
+              "aliases": [
+                "e-mail"
+              ]
+            },
+            {
+              "name": "Video game console",
+              "value": 1972,
+              "tier": "ruler",
+              "aliases": [
+                "games console",
+                "console"
+              ]
+            },
+            {
+              "name": "Walkman",
+              "value": 1979,
+              "tier": "ruler"
+            },
+            {
+              "name": "GPS",
+              "value": 1978,
+              "tier": "ruler"
+            },
+            {
+              "name": "CD",
+              "value": 1982,
+              "tier": "ruler",
+              "aliases": [
+                "compact disc"
+              ]
+            },
+            {
+              "name": "Laptop",
+              "value": 1981,
+              "tier": "ruler"
+            },
+            {
+              "name": "Facebook",
+              "value": 2004,
+              "tier": "ruler"
+            },
+            {
+              "name": "iPod",
+              "value": 2001,
+              "tier": "ruler"
+            },
+            {
+              "name": "MP3",
+              "value": 1993,
+              "tier": "yardstick"
+            },
+            {
+              "name": "DVD",
+              "value": 1995,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Floppy disk",
+              "value": 1971,
+              "tier": "yardstick",
+              "aliases": [
+                "floppy"
+              ]
+            },
+            {
+              "name": "Microprocessor",
+              "value": 1971,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Digital camera",
+              "value": 1975,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Wi-Fi",
+              "value": 1997,
+              "tier": "yardstick",
+              "aliases": [
+                "wifi"
+              ]
+            },
+            {
+              "name": "Bluetooth",
+              "value": 1999,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Google",
+              "value": 1998,
+              "tier": "yardstick"
+            },
+            {
+              "name": "YouTube",
+              "value": 2005,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Twitter",
+              "value": 2006,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Post-it note",
+              "value": 1980,
+              "tier": "milestone",
+              "aliases": [
+                "post-it",
+                "post it",
+                "sticky note"
+              ],
+              "fact": "Post-it notes came from a failed attempt to make a super-strong glue."
+            },
+            {
+              "name": "Rubik's Cube",
+              "value": 1974,
+              "tier": "milestone",
+              "aliases": [
+                "rubiks cube",
+                "rubik cube"
+              ]
+            },
+            {
+              "name": "Game Boy",
+              "value": 1989,
+              "tier": "milestone",
+              "aliases": [
+                "gameboy"
+              ]
+            },
+            {
+              "name": "USB",
+              "value": 1996,
+              "tier": "milestone"
+            },
+            {
+              "name": "Text message",
+              "value": 1992,
+              "tier": "milestone",
+              "aliases": [
+                "sms",
+                "texting"
+              ]
+            },
+            {
+              "name": "Smartphone",
+              "value": 1994,
+              "tier": "milestone"
+            },
+            {
+              "name": "Television",
+              "value": 1927,
+              "aliases": [
+                "tv"
+              ]
+            },
+            {
+              "name": "Computer",
+              "value": 1946
+            },
+            {
+              "name": "Laser",
+              "value": 1960
+            },
+            {
+              "name": "Transistor",
+              "value": 1947
+            },
+            {
+              "name": "Satellite",
+              "value": 1957,
+              "aliases": [
+                "sputnik"
+              ]
+            },
+            {
+              "name": "Microwave oven",
+              "value": 1946,
+              "aliases": [
+                "microwave"
+              ]
+            },
+            {
+              "name": "Instagram",
+              "value": 2010
+            },
+            {
+              "name": "iPad",
+              "value": 2010
+            },
+            {
+              "name": "ChatGPT",
+              "value": 2022
+            }
+          ]
+        },
+        {
+          "category": "mountain",
+          "title": "Mountains by height",
+          "question": "Name a mountain taller than Kilimanjaro but shorter than Aconcagua.",
+          "unit": "m",
+          "scale": "linear",
+          "words": [
+            "tall",
+            "short"
+          ],
+          "lo": {
+            "name": "Kilimanjaro",
+            "value": 5895
+          },
+          "hi": {
+            "name": "Aconcagua",
+            "value": 6961
+          },
+          "common": "Denali",
+          "rarest": "Cotopaxi",
+          "source": "Summit heights from Wikipedia",
+          "answers": [
+            {
+              "name": "Denali",
+              "value": 6190,
+              "tier": "pin",
+              "aliases": [
+                "mount mckinley",
+                "mckinley"
+              ]
+            },
+            {
+              "name": "Mount Logan",
+              "value": 5959,
+              "tier": "ruler",
+              "aliases": [
+                "logan"
+              ]
+            },
+            {
+              "name": "Chimborazo",
+              "value": 6263,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Huascaran",
+              "value": 6768,
+              "tier": "yardstick",
+              "aliases": [
+                "huascarán"
+              ]
+            },
+            {
+              "name": "Mount Kailash",
+              "value": 6638,
+              "tier": "yardstick",
+              "aliases": [
+                "kailash"
+              ]
+            },
+            {
+              "name": "Ama Dablam",
+              "value": 6812,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Ojos del Salado",
+              "value": 6893,
+              "tier": "milestone"
+            },
+            {
+              "name": "Cotopaxi",
+              "value": 5897,
+              "tier": "milestone",
+              "fact": "Cotopaxi is just 2 m taller than Kilimanjaro."
+            },
+            {
+              "name": "Illimani",
+              "value": 6438,
+              "tier": "milestone"
+            },
+            {
+              "name": "Sajama",
+              "value": 6542,
+              "tier": "milestone",
+              "aliases": [
+                "nevado sajama"
+              ]
+            },
+            {
+              "name": "Yerupaja",
+              "value": 6635,
+              "tier": "milestone"
+            },
+            {
+              "name": "Island Peak",
+              "value": 6189,
+              "tier": "milestone",
+              "aliases": [
+                "imja tse"
+              ]
+            },
+            {
+              "name": "Stok Kangri",
+              "value": 6153,
+              "tier": "milestone"
+            },
+            {
+              "name": "Mera Peak",
+              "value": 6476,
+              "tier": "milestone"
+            },
+            {
+              "name": "Mount Ararat",
+              "value": 5137,
+              "aliases": [
+                "ararat"
+              ]
+            },
+            {
+              "name": "Mount Elbrus",
+              "value": 5642,
+              "aliases": [
+                "elbrus"
+              ]
+            },
+            {
+              "name": "Mount Everest",
+              "value": 8849,
+              "aliases": [
+                "everest"
+              ]
+            },
+            {
+              "name": "Mont Blanc",
+              "value": 4806
+            },
+            {
+              "name": "Pico de Orizaba",
+              "value": 5636,
+              "aliases": [
+                "orizaba"
+              ]
+            },
+            {
+              "name": "Lenin Peak",
+              "value": 7134
+            },
+            {
+              "name": "Mount Vinson",
+              "value": 4892,
+              "aliases": [
+                "vinson"
+              ]
+            },
+            {
+              "name": "K2",
+              "value": 8611
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

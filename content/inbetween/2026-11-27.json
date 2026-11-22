@@ -1,0 +1,1081 @@
+{
+  "rounds": [
+    {
+      "prompts": [
+        {
+          "category": "weight",
+          "title": "Small animals by weight",
+          "question": "Name an animal heavier than a mouse but lighter than a cat.",
+          "unit": "kg",
+          "scale": "log",
+          "words": [
+            "heavy",
+            "light"
+          ],
+          "lo": {
+            "name": "Mouse",
+            "value": 0.02
+          },
+          "hi": {
+            "name": "Cat",
+            "value": 4
+          },
+          "common": "Rabbit",
+          "rarest": "Platypus",
+          "source": "Typical adult weights from Wikipedia species articles",
+          "answers": [
+            {
+              "name": "Rabbit",
+              "value": 2,
+              "tier": "pin",
+              "aliases": [
+                "bunny"
+              ]
+            },
+            {
+              "name": "Guinea pig",
+              "value": 1,
+              "tier": "pin"
+            },
+            {
+              "name": "Hamster",
+              "value": 0.15,
+              "tier": "pin"
+            },
+            {
+              "name": "Rat",
+              "value": 0.3,
+              "tier": "pin"
+            },
+            {
+              "name": "Squirrel",
+              "value": 0.5,
+              "tier": "ruler"
+            },
+            {
+              "name": "Hedgehog",
+              "value": 0.8,
+              "tier": "ruler"
+            },
+            {
+              "name": "Chicken",
+              "value": 2.5,
+              "tier": "ruler",
+              "aliases": [
+                "hen"
+              ]
+            },
+            {
+              "name": "Ferret",
+              "value": 1,
+              "tier": "ruler"
+            },
+            {
+              "name": "Pigeon",
+              "value": 0.35,
+              "tier": "ruler"
+            },
+            {
+              "name": "Duck",
+              "value": 1.5,
+              "tier": "ruler"
+            },
+            {
+              "name": "Parrot",
+              "value": 0.4,
+              "tier": "yardstick",
+              "aliases": [
+                "african grey"
+              ]
+            },
+            {
+              "name": "Chinchilla",
+              "value": 0.5,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Meerkat",
+              "value": 0.7,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Gerbil",
+              "value": 0.06,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Bullfrog",
+              "value": 0.5,
+              "tier": "yardstick",
+              "aliases": [
+                "frog"
+              ]
+            },
+            {
+              "name": "Skunk",
+              "value": 3,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Chipmunk",
+              "value": 0.1,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Platypus",
+              "value": 1.5,
+              "tier": "milestone",
+              "fact": "Male platypuses have venomous spurs on their back legs."
+            },
+            {
+              "name": "Sugar glider",
+              "value": 0.12,
+              "tier": "milestone"
+            },
+            {
+              "name": "Mole",
+              "value": 0.1,
+              "tier": "milestone"
+            },
+            {
+              "name": "Tarantula",
+              "value": 0.08,
+              "tier": "milestone"
+            },
+            {
+              "name": "Weasel",
+              "value": 0.1,
+              "tier": "milestone"
+            },
+            {
+              "name": "Kiwi",
+              "value": 3,
+              "tier": "milestone"
+            },
+            {
+              "name": "Dog",
+              "value": 30
+            },
+            {
+              "name": "Fox",
+              "value": 6
+            },
+            {
+              "name": "Horse",
+              "value": 500
+            },
+            {
+              "name": "Elephant",
+              "value": 6000
+            },
+            {
+              "name": "Shrew",
+              "value": 0.01
+            },
+            {
+              "name": "Hummingbird",
+              "value": 0.004
+            },
+            {
+              "name": "Ant",
+              "value": 3e-06
+            },
+            {
+              "name": "Snail",
+              "value": 0.005
+            }
+          ]
+        },
+        {
+          "category": "population",
+          "title": "Countries by population",
+          "question": "Name a country with more people than Brazil but fewer than India.",
+          "unit": "million",
+          "scale": "log",
+          "words": [
+            "many people",
+            "few people"
+          ],
+          "lo": {
+            "name": "Brazil",
+            "value": 212
+          },
+          "hi": {
+            "name": "India",
+            "value": 1440
+          },
+          "common": "China",
+          "rarest": "Nigeria",
+          "source": "UN World Population Prospects 2024, rounded",
+          "answers": [
+            {
+              "name": "China",
+              "value": 1410,
+              "tier": "pin"
+            },
+            {
+              "name": "United States",
+              "value": 340,
+              "tier": "pin",
+              "aliases": [
+                "usa",
+                "us",
+                "america"
+              ]
+            },
+            {
+              "name": "Indonesia",
+              "value": 280,
+              "tier": "ruler"
+            },
+            {
+              "name": "Pakistan",
+              "value": 250,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Nigeria",
+              "value": 230,
+              "tier": "milestone",
+              "fact": "Nigeria has more people than any other country in Africa."
+            },
+            {
+              "name": "Bangladesh",
+              "value": 173
+            },
+            {
+              "name": "Russia",
+              "value": 144
+            },
+            {
+              "name": "Japan",
+              "value": 124
+            },
+            {
+              "name": "Mexico",
+              "value": 130
+            },
+            {
+              "name": "Ethiopia",
+              "value": 129
+            },
+            {
+              "name": "Germany",
+              "value": 84
+            }
+          ]
+        },
+        {
+          "category": "year",
+          "title": "Inventions by year",
+          "question": "Name an invention from after the steam engine but before the telephone.",
+          "unit": "year",
+          "scale": "linear",
+          "words": [
+            "late",
+            "early"
+          ],
+          "lo": {
+            "name": "Steam engine",
+            "value": 1712
+          },
+          "hi": {
+            "name": "Telephone",
+            "value": 1876
+          },
+          "common": "Steam locomotive",
+          "rarest": "Braille",
+          "source": "Dates of first working version or patent, from Wikipedia",
+          "answers": [
+            {
+              "name": "Steam locomotive",
+              "value": 1804,
+              "tier": "pin",
+              "aliases": [
+                "train",
+                "locomotive"
+              ]
+            },
+            {
+              "name": "Battery",
+              "value": 1800,
+              "tier": "pin",
+              "aliases": [
+                "electric battery"
+              ]
+            },
+            {
+              "name": "Camera",
+              "value": 1816,
+              "tier": "pin",
+              "aliases": [
+                "photograph",
+                "photography"
+              ]
+            },
+            {
+              "name": "Bicycle",
+              "value": 1817,
+              "tier": "pin",
+              "aliases": [
+                "bike"
+              ]
+            },
+            {
+              "name": "Telegraph",
+              "value": 1837,
+              "tier": "ruler"
+            },
+            {
+              "name": "Hot air balloon",
+              "value": 1783,
+              "tier": "ruler",
+              "aliases": [
+                "balloon"
+              ]
+            },
+            {
+              "name": "Typewriter",
+              "value": 1868,
+              "tier": "ruler"
+            },
+            {
+              "name": "Sewing machine",
+              "value": 1846,
+              "tier": "ruler"
+            },
+            {
+              "name": "Electric motor",
+              "value": 1834,
+              "tier": "ruler"
+            },
+            {
+              "name": "Stethoscope",
+              "value": 1816,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Lightning rod",
+              "value": 1752,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Morse code",
+              "value": 1837,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Dynamite",
+              "value": 1867,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Refrigerator",
+              "value": 1834,
+              "tier": "yardstick",
+              "aliases": [
+                "fridge"
+              ]
+            },
+            {
+              "name": "Matches",
+              "value": 1826,
+              "tier": "yardstick",
+              "aliases": [
+                "match"
+              ]
+            },
+            {
+              "name": "Vaccine",
+              "value": 1796,
+              "tier": "yardstick",
+              "aliases": [
+                "vaccination"
+              ]
+            },
+            {
+              "name": "Elevator",
+              "value": 1852,
+              "tier": "yardstick",
+              "aliases": [
+                "lift",
+                "safety elevator"
+              ]
+            },
+            {
+              "name": "Braille",
+              "value": 1824,
+              "tier": "milestone",
+              "fact": "Louis Braille was 15 when he created his reading system."
+            },
+            {
+              "name": "Bifocals",
+              "value": 1784,
+              "tier": "milestone",
+              "fact": "Benjamin Franklin is credited with inventing bifocals."
+            },
+            {
+              "name": "Postage stamp",
+              "value": 1840,
+              "tier": "milestone",
+              "aliases": [
+                "stamp"
+              ]
+            },
+            {
+              "name": "Jeans",
+              "value": 1873,
+              "tier": "milestone",
+              "aliases": [
+                "blue jeans"
+              ]
+            },
+            {
+              "name": "Christmas card",
+              "value": 1843,
+              "tier": "milestone"
+            },
+            {
+              "name": "Plastic",
+              "value": 1856,
+              "tier": "milestone",
+              "aliases": [
+                "parkesine"
+              ]
+            },
+            {
+              "name": "Light bulb",
+              "value": 1879,
+              "aliases": [
+                "lightbulb"
+              ]
+            },
+            {
+              "name": "Car",
+              "value": 1886
+            },
+            {
+              "name": "Radio",
+              "value": 1895
+            },
+            {
+              "name": "Piano",
+              "value": 1700
+            },
+            {
+              "name": "Printing press",
+              "value": 1440
+            },
+            {
+              "name": "Telescope",
+              "value": 1608
+            }
+          ]
+        },
+        {
+          "category": "landmark",
+          "title": "Landmarks by height",
+          "question": "Name a landmark taller than the Leaning Tower of Pisa but shorter than Big Ben.",
+          "unit": "m",
+          "scale": "linear",
+          "words": [
+            "tall",
+            "short"
+          ],
+          "lo": {
+            "name": "Leaning Tower of Pisa",
+            "value": 56
+          },
+          "hi": {
+            "name": "Big Ben",
+            "value": 96
+          },
+          "common": "Statue of Liberty",
+          "rarest": "Galata Tower",
+          "source": "Heights from Wikipedia, rounded to the metre",
+          "answers": [
+            {
+              "name": "Statue of Liberty",
+              "value": 93,
+              "tier": "pin",
+              "aliases": [
+                "liberty"
+              ]
+            },
+            {
+              "name": "Taj Mahal",
+              "value": 73,
+              "tier": "pin"
+            },
+            {
+              "name": "Sydney Opera House",
+              "value": 65,
+              "tier": "ruler",
+              "aliases": [
+                "opera house"
+              ]
+            },
+            {
+              "name": "Tower Bridge",
+              "value": 65,
+              "tier": "ruler"
+            },
+            {
+              "name": "Westminster Abbey",
+              "value": 69,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Notre-Dame de Paris",
+              "value": 69,
+              "tier": "yardstick",
+              "aliases": [
+                "notre dame",
+                "notre-dame"
+              ]
+            },
+            {
+              "name": "Brooklyn Bridge",
+              "value": 84,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Flatiron Building",
+              "value": 87,
+              "tier": "milestone",
+              "aliases": [
+                "flatiron"
+              ]
+            },
+            {
+              "name": "Washington National Cathedral",
+              "value": 91,
+              "tier": "milestone"
+            },
+            {
+              "name": "Galata Tower",
+              "value": 67,
+              "tier": "milestone",
+              "aliases": [
+                "galata"
+              ],
+              "fact": "Galata Tower in Istanbul was built by the Genoese in 1348."
+            },
+            {
+              "name": "Hagia Sophia",
+              "value": 55
+            },
+            {
+              "name": "Royal Liver Building",
+              "value": 98,
+              "aliases": [
+                "liver building"
+              ]
+            },
+            {
+              "name": "St Mark's Campanile",
+              "value": 99,
+              "aliases": [
+                "st marks campanile"
+              ]
+            },
+            {
+              "name": "Christ the Redeemer",
+              "value": 38
+            },
+            {
+              "name": "Arc de Triomphe",
+              "value": 50
+            },
+            {
+              "name": "Colosseum",
+              "value": 48,
+              "aliases": [
+                "coliseum"
+              ]
+            },
+            {
+              "name": "St Basil's Cathedral",
+              "value": 47,
+              "aliases": [
+                "st basils"
+              ]
+            },
+            {
+              "name": "Atomium",
+              "value": 102
+            },
+            {
+              "name": "London Eye",
+              "value": 135
+            },
+            {
+              "name": "Eiffel Tower",
+              "value": 330,
+              "aliases": [
+                "eiffel"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "alpha",
+          "title": "Sports, A to Z",
+          "question": "Name a sport that comes after golf but before hockey in the alphabet.",
+          "unit": "alpha",
+          "scale": "linear",
+          "words": [
+            "late",
+            "early"
+          ],
+          "lo": {
+            "name": "Golf"
+          },
+          "hi": {
+            "name": "Hockey"
+          },
+          "common": "Gymnastics",
+          "rarest": "Hapkido",
+          "source": "Alphabetical order of the English names",
+          "answers": [
+            {
+              "name": "Gymnastics",
+              "tier": "pin"
+            },
+            {
+              "name": "Handball",
+              "tier": "pin"
+            },
+            {
+              "name": "Hiking",
+              "tier": "ruler"
+            },
+            {
+              "name": "Hang gliding",
+              "tier": "ruler"
+            },
+            {
+              "name": "High jump",
+              "tier": "ruler"
+            },
+            {
+              "name": "Hammer throw",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Heptathlon",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Greyhound racing",
+              "tier": "milestone"
+            },
+            {
+              "name": "Harness racing",
+              "tier": "milestone"
+            },
+            {
+              "name": "Hapkido",
+              "tier": "milestone",
+              "fact": "Hapkido is a Korean martial art built on joint locks and throws."
+            },
+            {
+              "name": "Hacky sack",
+              "tier": "milestone",
+              "aliases": [
+                "footbag"
+              ]
+            },
+            {
+              "name": "Football",
+              "aliases": [
+                "soccer"
+              ]
+            },
+            {
+              "name": "Basketball"
+            },
+            {
+              "name": "Tennis"
+            },
+            {
+              "name": "Hurling"
+            },
+            {
+              "name": "Ice hockey"
+            },
+            {
+              "name": "Horse racing"
+            },
+            {
+              "name": "Gaelic football"
+            },
+            {
+              "name": "Hurdles"
+            },
+            {
+              "name": "Cricket"
+            },
+            {
+              "name": "Baseball"
+            },
+            {
+              "name": "Go-karting",
+              "aliases": [
+                "karting"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "alpha",
+          "title": "Vegetables, A to Z",
+          "question": "Name a vegetable that comes after carrot but before onion in the alphabet.",
+          "unit": "alpha",
+          "scale": "linear",
+          "words": [
+            "late",
+            "early"
+          ],
+          "lo": {
+            "name": "Carrot"
+          },
+          "hi": {
+            "name": "Onion"
+          },
+          "common": "Celery",
+          "rarest": "Kohlrabi",
+          "source": "Alphabetical order of the English names",
+          "answers": [
+            {
+              "name": "Celery",
+              "tier": "pin"
+            },
+            {
+              "name": "Cucumber",
+              "tier": "pin"
+            },
+            {
+              "name": "Lettuce",
+              "tier": "pin"
+            },
+            {
+              "name": "Cauliflower",
+              "tier": "pin"
+            },
+            {
+              "name": "Leek",
+              "tier": "ruler"
+            },
+            {
+              "name": "Kale",
+              "tier": "ruler"
+            },
+            {
+              "name": "Garlic",
+              "tier": "ruler"
+            },
+            {
+              "name": "Mushroom",
+              "tier": "ruler"
+            },
+            {
+              "name": "Corn",
+              "tier": "ruler",
+              "aliases": [
+                "sweetcorn",
+                "sweet corn"
+              ]
+            },
+            {
+              "name": "Courgette",
+              "tier": "yardstick",
+              "aliases": [
+                "zucchini"
+              ]
+            },
+            {
+              "name": "Eggplant",
+              "tier": "yardstick",
+              "aliases": [
+                "aubergine"
+              ]
+            },
+            {
+              "name": "Okra",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Fennel",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Chard",
+              "tier": "yardstick",
+              "aliases": [
+                "swiss chard"
+              ]
+            },
+            {
+              "name": "Chickpea",
+              "tier": "yardstick",
+              "aliases": [
+                "chickpeas"
+              ]
+            },
+            {
+              "name": "Lentil",
+              "tier": "yardstick",
+              "aliases": [
+                "lentils"
+              ]
+            },
+            {
+              "name": "Kohlrabi",
+              "tier": "milestone",
+              "fact": "Kohlrabi is German for cabbage turnip."
+            },
+            {
+              "name": "Endive",
+              "tier": "milestone"
+            },
+            {
+              "name": "Jicama",
+              "tier": "milestone"
+            },
+            {
+              "name": "Edamame",
+              "tier": "milestone"
+            },
+            {
+              "name": "Horseradish",
+              "tier": "milestone"
+            },
+            {
+              "name": "Artichoke"
+            },
+            {
+              "name": "Broccoli"
+            },
+            {
+              "name": "Potato"
+            },
+            {
+              "name": "Pumpkin"
+            },
+            {
+              "name": "Spinach"
+            },
+            {
+              "name": "Tomato"
+            },
+            {
+              "name": "Pea",
+              "aliases": [
+                "peas"
+              ]
+            },
+            {
+              "name": "Pepper"
+            },
+            {
+              "name": "Beetroot",
+              "aliases": [
+                "beet"
+              ]
+            },
+            {
+              "name": "Cabbage"
+            },
+            {
+              "name": "Asparagus"
+            },
+            {
+              "name": "Radish"
+            },
+            {
+              "name": "Turnip"
+            }
+          ]
+        },
+        {
+          "category": "mountain",
+          "title": "Mountains by height",
+          "question": "Name a mountain taller than Mount Olympus but shorter than Mount Fuji.",
+          "unit": "m",
+          "scale": "linear",
+          "words": [
+            "tall",
+            "short"
+          ],
+          "lo": {
+            "name": "Mount Olympus",
+            "value": 2918
+          },
+          "hi": {
+            "name": "Mount Fuji",
+            "value": 3776
+          },
+          "common": "Mount Etna",
+          "rarest": "Musala",
+          "source": "Summit heights from Wikipedia",
+          "answers": [
+            {
+              "name": "Mount Etna",
+              "value": 3357,
+              "tier": "pin",
+              "aliases": [
+                "etna"
+              ]
+            },
+            {
+              "name": "Mount Teide",
+              "value": 3715,
+              "tier": "ruler",
+              "aliases": [
+                "teide",
+                "pico del teide"
+              ]
+            },
+            {
+              "name": "Mount Cook",
+              "value": 3724,
+              "tier": "ruler",
+              "aliases": [
+                "aoraki",
+                "aoraki mount cook"
+              ]
+            },
+            {
+              "name": "Zugspitze",
+              "value": 2962,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Mount Hood",
+              "value": 3429,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Mount Baker",
+              "value": 3286,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Lassen Peak",
+              "value": 3189,
+              "tier": "milestone",
+              "aliases": [
+                "mount lassen"
+              ]
+            },
+            {
+              "name": "Mount Aspiring",
+              "value": 3033,
+              "tier": "milestone"
+            },
+            {
+              "name": "Aneto",
+              "value": 3404,
+              "tier": "milestone"
+            },
+            {
+              "name": "Mulhacen",
+              "value": 3479,
+              "tier": "milestone",
+              "aliases": [
+                "mulhacén"
+              ]
+            },
+            {
+              "name": "Mount Apo",
+              "value": 2954,
+              "tier": "milestone"
+            },
+            {
+              "name": "Musala",
+              "value": 2925,
+              "tier": "milestone",
+              "fact": "Musala in Bulgaria is the highest peak in the Balkans, just above Olympus."
+            },
+            {
+              "name": "Grossglockner",
+              "value": 3798
+            },
+            {
+              "name": "Mount Erebus",
+              "value": 3794,
+              "aliases": [
+                "erebus"
+              ]
+            },
+            {
+              "name": "Mount Sinai",
+              "value": 2285,
+              "aliases": [
+                "sinai"
+              ]
+            },
+            {
+              "name": "Mount Kosciuszko",
+              "value": 2228,
+              "aliases": [
+                "kosciuszko"
+              ]
+            },
+            {
+              "name": "Mount Ararat",
+              "value": 5137,
+              "aliases": [
+                "ararat"
+              ]
+            },
+            {
+              "name": "Mount Rainier",
+              "value": 4392,
+              "aliases": [
+                "rainier"
+              ]
+            },
+            {
+              "name": "Mount St Helens",
+              "value": 2549,
+              "aliases": [
+                "st helens"
+              ]
+            },
+            {
+              "name": "Mount Kinabalu",
+              "value": 4095,
+              "aliases": [
+                "kinabalu"
+              ]
+            },
+            {
+              "name": "Mount Ruapehu",
+              "value": 2797,
+              "aliases": [
+                "ruapehu"
+              ]
+            },
+            {
+              "name": "Mount Hermon",
+              "value": 2814
+            },
+            {
+              "name": "Triglav",
+              "value": 2864
+            },
+            {
+              "name": "Mount Shasta",
+              "value": 4322,
+              "aliases": [
+                "shasta"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
