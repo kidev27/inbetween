@@ -8,7 +8,7 @@ export function Rules() {
         <li>Every day there are {PROMPTS} prompts. Each names two limits, like a cat and a horse.</li>
         <li>Name one thing that fits between them. You have {TIME_MS / 1000} seconds.</li>
         <li>Rarer answers pull out more tape. Every point is one centimetre, so a perfect day is {PROMPTS} m.</li>
-        <li>An answer we don’t know gets one more try. Just outside a limit is a close call: {CLOSE_POINTS} cm.</li>
+        <li>An answer we don’t know doesn’t count: keep trying until time runs out. Just outside a limit is a close call: {CLOSE_POINTS} cm.</li>
       </ol>
       <ul class="tiers" aria-label="Tiers">
         {(Object.keys(TIERS) as Tier[]).map((t) => (

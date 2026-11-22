@@ -83,12 +83,12 @@ describe('answers', () => {
     expect(m.view(s, T0, p).current?.note).toBe('limit')
   })
 
-  it('gives one retry for an answer that is not on the list', () => {
-    const once = run([begin(0), say(0, 'Unicorn')])
-    expect(once.recs).toEqual([])
-    expect(m.view(once, T0, p).current?.note).toBe('unknown')
-    expect(last(m.apply(once, say(0, 'Gem')[0], p, T0))).toMatchObject({ points: 100 })
-    expect(last(m.apply(once, say(0, ' Unicorn ')[0], p, T0))).toMatchObject({ outcome: 'unknown', text: 'Unicorn', points: 0 })
+  it('lets the player keep trying answers that are not on the list until time runs out', () => {
+    const tries = run([begin(0), say(0, 'Unicorn'), say(0, 'Dragon'), say(0, 'Unicorn')])
+    expect(tries.recs).toEqual([])
+    expect(m.view(tries, T0, p).current?.note).toBe('unknown')
+    expect(last(m.apply(tries, say(0, 'Gem')[0], p, T0))).toMatchObject({ points: 100 })
+    expect(last(m.apply(tries, { type: 'timeout', prompt: 0 }, p, T0 + TIME_MS))).toMatchObject({ outcome: 'time' })
   })
 })
 

@@ -279,7 +279,7 @@ function Ask(props: {
       return setFix({ from: text, to })
     }
     setFix(null)
-    setMsg(v.current?.note === 'limit' ? 'That’s one of the limits. Name something in between.' : `“${text}” isn’t on our list. One more try.`)
+    setMsg(v.current?.note === 'limit' ? 'That’s one of the limits. Name something in between.' : `“${text}” isn’t on our list. Try another.`)
     shake(form.current)
     input.current?.select()
   }
