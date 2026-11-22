@@ -200,6 +200,8 @@ async function sparql(query: string, attempt = 1): Promise<Record<string, { valu
 }
 
 /** Wikidata labels are often lowercase ("telephone"); names in the game start with a capital. */
+/** Up to 12 aliases, shortest first (USA, US before U.S. of America), in a stable order build to build. */
+const keep = (aliases: string[]) => [...new Set(aliases)].sort((a, b) => a.length - b.length || a.localeCompare(b)).slice(0, 12)
 const tidy = (s: string) => s.trim().replace(/^\p{Ll}/u, (c) => c.toUpperCase())
 const usable = (s: string) => s.length >= 2 && s.length <= 40 && !/^Q\d+$/.test(s) && !/[()\[\]:;/]/.test(s)
 
@@ -229,7 +231,7 @@ async function build(spec: Spec) {
       .map((a) => a.trim()).filter((a) => usable(a) && a.toLowerCase() !== name.toLowerCase())
     const prev = byName.get(name.toLowerCase())
     // Same name twice (e.g. two mountains called Dom): keep the better known one.
-    if (!prev || prev[2] < fame) byName.set(name.toLowerCase(), [name, round(value), fame, aliases.slice(0, 8)])
+    if (!prev || prev[2] < fame) byName.set(name.toLowerCase(), [name, round(value), fame, keep(aliases)])
   }
   // Hand-written rows and extras: fame from Wikidata by name, 1 if it has no article anywhere.
   const table = spec.table ? readTable(spec.table.file).filter((r) => r[spec.table!.column] && (spec.table!.only?.(r) ?? true)) : []
