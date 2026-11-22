@@ -43,14 +43,17 @@ export function buildIndex<A extends { name: string; aliases: string[]; fuzzy?: 
 /** Typo allowance by input length: none under 5 chars, 1 up to 8, 2 from 9. */
 const allowance = (len: number) => (len >= 9 ? 2 : len >= 5 ? 1 : 0)
 
-/** Returns the matched answer's index, or null. Equally close typo candidates count as no match. */
+/**
+ * Returns the matched answer's index, or null: exact, then a small typo, then the one answer the
+ * input starts ("janitor clos" -> "Janitor's closet"). Ties count as no match.
+ */
 export function match<A>(index: AnswerIndex<A>, input: string): number | null {
   const k = key(input)
   if (!k) return null
   const hit = index.exact.get(k)
   if (hit !== undefined) return hit
   const max = allowance(k.length)
-  if (!max) return null
+  if (!max) return prefix(index, input)
   let best: number | null = null
   let bestD = max + 1
   let tie = false
@@ -58,9 +61,18 @@ export function match<A>(index: AnswerIndex<A>, input: string): number | null {
     if (Math.abs(c.key.length - k.length) > max) continue
     const d = distance(k, c.key, max)
     if (d < bestD) [best, bestD, tie] = [c.i, d, false]
-    else if (d === bestD && c.i !== best) tie = true
+    else if (d === bestD && d <= max && c.i !== best) tie = true
   }
-  return tie ? null : best
+  if (best !== null || tie) return tie ? null : best
+  return prefix(index, input)
+}
+
+/** The only canonical name starting with the input (4+ letters), or null. */
+function prefix<A>(index: AnswerIndex<A>, input: string): number | null {
+  const p = normalize(input).replace(/ /g, '')
+  if (p.length < 4) return null
+  const hits = new Set(index.canonical.filter((c) => c.key.startsWith(p)).map((c) => c.i))
+  return hits.size === 1 ? [...hits][0] : null
 }
 
 /** Optimal-string-alignment distance (Levenshtein plus adjacent swaps). Returns max+1 once exceeded. */

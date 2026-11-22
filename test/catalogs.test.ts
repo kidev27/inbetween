@@ -21,7 +21,8 @@ const p = m.parse(day({ catalog: 'things' }))
 const answer = (text: string) => {
   let s = m.apply(m.start(p, 0), { type: 'begin', prompt: 0 }, p, 0)
   s = m.apply(s, { type: 'answer', prompt: 0, text }, p, 0)
-  s = m.apply(s, { type: 'answer', prompt: 0, text }, p, 0) // a second try if the first was unknown
+  // Confirm a filled-in correction, or use the second try if the first was unknown.
+  s = m.apply(s, { type: 'answer', prompt: 0, text: m.view(s, 0, p).current?.correction ?? text }, p, 0)
   return m.view(s, 0, p).answered[0]
 }
 

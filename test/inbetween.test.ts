@@ -55,11 +55,20 @@ describe('clock', () => {
 })
 
 describe('answers', () => {
-  it('scores by tier, with aliases and typos', () => {
+  it('scores exact names and aliases by tier', () => {
     expect(last(run([begin(0), say(0, 'Middle')]))).toMatchObject({ outcome: 'hit', points: 10, answer: { name: 'Middle', tier: 'pin' } })
     expect(last(run([begin(0), say(0, 'the MID')]))).toMatchObject({ answer: { name: 'Middle' } })
-    expect(last(run([begin(0), say(0, 'yardstik')]))).toMatchObject({ points: 70 })
     expect(last(run([begin(0), say(0, 'gem')]))).toMatchObject({ points: 100, answer: { fact: 'Gems are rare.' } })
+  })
+
+  it('fills in a typo or partial answer to confirm, and scores it once confirmed', () => {
+    for (const typed of ['yardstik', 'Yards', 'yardsti']) {
+      const s = run([begin(0), say(0, typed)])
+      expect(s.recs).toEqual([])
+      expect(m.view(s, T0, p).current).toMatchObject({ note: 'correction', correction: 'Yardstick' })
+      expect(last(m.apply(s, say(0, 'Yardstick')[0], p, T0))).toMatchObject({ points: 70 })
+    }
+    expect(m.view(run([begin(0), say(0, 'Yar')]), T0, p).current?.note).toBe('unknown') // too short to complete
   })
 
   it('gives a close call just outside a limit, and 0 further out', () => {
