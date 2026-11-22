@@ -247,6 +247,7 @@
           "common": "Television",
           "rarest": "Bubble wrap",
           "source": "Dates of first working version or patent, from Wikipedia",
+          "catalog": "inventions",
           "answers": [
             {
               "name": "Television",
@@ -474,6 +475,7 @@
           "common": "Brazil",
           "rarest": "Ethiopia",
           "source": "UN World Population Prospects 2024, rounded",
+          "catalog": "countries",
           "answers": [
             {
               "name": "Brazil",
@@ -754,6 +756,7 @@
           "common": "Empire State Building",
           "rarest": "Tokyo Tower",
           "source": "Heights to the tip, from Wikipedia",
+          "catalog": "structures",
           "answers": [
             {
               "name": "Empire State Building",
@@ -935,6 +938,7 @@
           "common": "China",
           "rarest": "Comoros",
           "source": "Alphabetical order of the English short names",
+          "catalog": "countries",
           "answers": [
             {
               "name": "China",
@@ -1044,6 +1048,7 @@
           "common": "Aconcagua",
           "rarest": "Chimborazo",
           "source": "Summit heights from Wikipedia",
+          "catalog": "mountains",
           "answers": [
             {
               "name": "Aconcagua",

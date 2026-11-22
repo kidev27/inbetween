@@ -92,6 +92,39 @@ One file per day: `content/inbetween/YYYY-MM-DD.json` with seven prompts.
 - Order prompts from wide ranges to tight ones. Always fill in `source`; it is shown on the reveal.
 - Content is checked when the server starts and by `npm test`; a bad file stops both.
 
+### Big answer lists from Wikidata
+
+Like Krillion, the game accepts far more answers than anyone would write by hand. Add
+`"catalog": "<id>"` to a prompt and every entry of `content/catalogs/<id>.json` becomes an answer
+too, under the hand-written ones:
+
+| Catalog | Entries | Used by |
+|---|---|---|
+| `mountains` | ~22,800 | mountain heights |
+| `structures` | ~1,800 | towers, buildings, bridges, statues |
+| `inventions` | ~760 | invention years |
+| `waterfalls` | ~410 | waterfall heights |
+| `countries` | ~200 | populations, countries A to Z |
+| `colours`, `fruits`, `vegetables`, `sports`, `instruments` | 150-850 each | A to Z prompts |
+
+- **Hand-written answers win.** A catalog entry sharing a name or alias with one (or with a limit)
+  is the same thing and is skipped, so curated values, tiers and facts stay.
+- **Rarity comes from fame**: how many Wikipedias have an article on the entry. 150 or more is a
+  Pin, 60 a Ruler, 20 a Yardstick, anything less a Milestone.
+- **Typos** only match catalog names with 20 or more Wikipedias, so a slip can't land on an
+  obscure peak with a similar name.
+- Out-of-range entries are answers too, so they get a proper "too tall" reveal.
+
+Rebuild the catalogs (a few minutes; Wikidata is slow, and the script retries):
+
+```bash
+NODE_USE_ENV_PROXY=1 node scripts/catalogs.ts              # all
+NODE_USE_ENV_PROXY=1 node scripts/catalogs.ts mountains    # one
+```
+
+`NODE_USE_ENV_PROXY=1` is only needed behind an HTTP proxy. Animal weights and speeds are too
+sparse on Wikidata, so those prompts stay hand-written.
+
 ## Deploying next to Blinker and HIGH▲LOW▼ on one VM
 
 The same VM runs all three: Blinker on 8787, HIGH▲LOW▼ on 8788 and this one on 8789, with Caddy
@@ -138,7 +171,7 @@ Back up `data/inbetween.db` (with its `-wal` file).
 ## How it fits together
 
 - `src/shared/` – types and rules shared by client and server.
-- `server/` – Fastify app. `match.ts` matches typed answers; `modes/inbetween.ts` is the game as a
+- `server/` – Fastify app. `match.ts` matches typed answers; `catalogs.ts` loads the Wikidata lists; `modes/inbetween.ts` is the game as a
   pure reducer over `begin`, `answer` and `timeout` events.
 - `src/client/` – Preact app. `core/` is mode-agnostic (API, streaks, share, settings, motion);
   `modes/inbetween/` has the screens, the number-line layout (`line.ts`) and the drawn art (`art.tsx`).
