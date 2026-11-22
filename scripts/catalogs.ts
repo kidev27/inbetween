@@ -150,28 +150,34 @@ async function addWordnet(roots: string[], byName: Map<string, [string, number, 
   const todo = roots.map((r) => { const [lemma, sense = '1'] = r.split('.'); return index.get(lemma)![Number(sense) - 1] })
   while (todo.length) for (const k of kids.get(todo.pop()!) ?? []) if (!seen.has(k)) seen.add(k), todo.push(k)
   const owner = new Map<string, string>() // any name or alias -> entry key
-  for (const [k, e] of byName) for (const x of [e[0], ...e[3]]) owner.set(x.toLowerCase(), k)
+  for (const [k, e] of byName) for (const x of [e[0], ...e[3]]) owner.set(same(x), k)
   const fresh: string[][] = []
   for (const off of seen) {
     const names = words.get(off)!.filter((w) => usable(w) && !/\d/.test(w))
     const common = names.filter((w) => !LATIN.test(w) || names.length === 1)
     if (!common.length) continue
-    const hit = common.map((w) => owner.get(w.toLowerCase())).find(Boolean)
+    const hit = common.map((w) => owner.get(same(w))).find(Boolean)
     if (hit) {
       const e = byName.get(hit)!
       e[3] = [...new Set([...e[3], ...common.filter((w) => w.toLowerCase() !== e[0].toLowerCase())])].slice(0, 12)
     } else fresh.push(common.map(tidy))
   }
-  const fame = await fameOf(fresh.map((n) => n[0]))
-  for (const [name, ...aliases] of fresh)
-    if (!byName.has(name.toLowerCase())) byName.set(name.toLowerCase(), [name, 0, fame.get(name.toLowerCase()) ?? 1, aliases])
+  // Each new entry is named after its best-known word ("Kiwi", not "Chinese gooseberry").
+  const fame = await fameOf(fresh.flat())
+  for (const words of fresh) {
+    const f = (w: string) => fame.get(w.toLowerCase()) ?? 0
+    const [name, ...aliases] = [...words].sort((a, b) => f(b) - f(a))
+    if (!byName.has(name.toLowerCase())) byName.set(name.toLowerCase(), [name, 0, Math.max(1, f(name)), aliases])
+  }
 }
 
 /** Fame (Wikipedias with an article) of things known only by name: the best known item with that label. */
 async function fameOf(names: string[]) {
   const out = new Map<string, number>()
   for (let i = 0; i < names.length; i += 80) {
-    const values = names.slice(i, i + 80).flatMap((n) => [n, n.toLowerCase()]).map((n) => `${JSON.stringify(n)}@en`).join(' ')
+    // Wikidata labels vary in case ("Common ostrich", "Common Ostrich", "ostrich"): ask for each spelling.
+    const spellings = (n: string) => [n, n.toLowerCase(), tidy(n.toLowerCase()), n.toLowerCase().replace(/\b\p{Ll}/gu, (c) => c.toUpperCase())]
+    const values = [...new Set(names.slice(i, i + 80).flatMap(spellings))].map((n) => `${JSON.stringify(n)}@en`).join(' ')
     for (const r of await sparql(`SELECT ?n (MAX(?links) AS ?fame) WHERE { VALUES ?n { ${values} } ?item rdfs:label|wdt:P1843 ?n ; wikibase:sitelinks ?links . } GROUP BY ?n`)) {
       const k = r.n.value.toLowerCase()
       out.set(k, Math.max(out.get(k) ?? 0, Number(r.fame.value)))
@@ -200,6 +206,8 @@ async function sparql(query: string, attempt = 1): Promise<Record<string, { valu
 }
 
 /** Wikidata labels are often lowercase ("telephone"); names in the game start with a capital. */
+/** Same name for merging: "Kiwi fruit" = "Kiwifruit". */
+const same = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '')
 /** Up to 12 aliases, shortest first (USA, US before U.S. of America), in a stable order build to build. */
 const keep = (aliases: string[]) => [...new Set(aliases)].sort((a, b) => a.length - b.length || a.localeCompare(b)).slice(0, 12)
 const tidy = (s: string) => s.trim().replace(/^\p{Ll}/u, (c) => c.toUpperCase())
@@ -236,14 +244,22 @@ async function build(spec: Spec) {
   // Hand-written rows and extras: fame from Wikidata by name, 1 if it has no article anywhere.
   const table = spec.table ? readTable(spec.table.file).filter((r) => r[spec.table!.column] && (spec.table!.only?.(r) ?? true)) : []
   const more = [...table.map((r) => [r.name, ...r.aliases.split(',')]), ...extras(spec.id)].map((n) => n.filter(Boolean))
-  const fame = more.length ? await fameOf(more.map((n) => n[0])) : new Map()
-  for (const [name, ...aliases] of more) {
+  // Fame of a hand-written row is its best-known name or alias ("cat" beats a minor item called "house cat").
+  const fame = more.length ? await fameOf(more.flat()) : new Map<string, number>()
+  const owner = new Map<string, string>()
+  for (const [k, e] of byName) for (const x of [e[0], ...e[3]]) owner.set(same(x), k)
+  for (const names of more) {
+    const [name, ...aliases] = names
     const row = table.find((r) => r.name === name)
-    const prev = byName.get(name.toLowerCase())
-    if (prev && !row) continue
-    // A hand-written value beats Wikidata's; the better fame and all aliases are kept.
-    const value = row ? Number(row[spec.table!.column]) : 0
-    byName.set(name.toLowerCase(), [name, value, Math.max(prev?.[2] ?? 0, fame.get(name.toLowerCase()) ?? 1), [...new Set([...(prev?.[3] ?? []), ...aliases])]])
+    const best = Math.max(1, ...names.map((n) => fame.get(n.toLowerCase()) ?? 0))
+    // The same thing may already be in under another name ("Common ostrich" for Ostrich): merge into it.
+    const k = names.map((n) => owner.get(same(n))).find(Boolean)
+    const prev = k ? byName.get(k) : undefined
+    if (prev) {
+      if (row) prev[1] = Number(row[spec.table!.column]) // a hand-written value beats Wikidata's
+      prev[2] = Math.max(prev[2], best)
+      prev[3] = keep([...prev[3], ...names.filter((n) => n.toLowerCase() !== prev[0].toLowerCase())])
+    } else byName.set(name.toLowerCase(), [name, row ? Number(row[spec.table!.column]) : 0, best, aliases])
   }
   if (spec.wordnet?.length) await addWordnet(spec.wordnet, byName)
   const entries = [...byName.values()].sort((a, b) => b[2] - a[2])
