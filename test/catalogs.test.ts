@@ -6,8 +6,9 @@ import { testPrompt } from './helpers.ts'
 // Best known first, as the builder writes them.
 const catalogs: Catalogs = new Map([['things', { id: 'things', unit: 'kg', source: 'test', entries: [
   ['Famous', 20, 200, ['celebrity']],
-  ['Middle duplicate', 50, 80, ['mid']], // shares an alias with the hand answer "Middle": same thing, skipped
+  ['Middle duplicate', 50, 80, ['mid']], // shares an alias with the hand answer "Middle": same thing, its name joins Middle
   ['High', 99, 70, []], // the upper limit's name: skipped
+  ['Upper bound', 99, 50, ['high']], // another name for the upper limit: typing it says so
   ['Also known', 25, 40, ['famous']], // alias clashes with "Famous": alias dropped, entry kept
   ['Rare one', 70, 70, []],
   ['Obscure', 80, 5, []],
@@ -34,13 +35,19 @@ it('adds catalog answers under the hand-written ones, tiered by how well known t
   expect(answer('Too big')).toMatchObject({ outcome: 'out', side: 'hi' })
   expect(answer('mid')).toMatchObject({ answer: { name: 'Middle', tier: 'pin' } }) // the hand answer wins
   expect(answer('famous')).toMatchObject({ answer: { name: 'Famous' } })
-  expect(answer('Middle duplicate').outcome).toBe('unknown')
+  expect(answer('Middle duplicate')).toMatchObject({ answer: { name: 'Middle', tier: 'pin' } })
 })
 
 it('matches typos only on well-known catalog names', () => {
   expect(answer('Faamous')).toMatchObject({ answer: { name: 'Famous' } })
   expect(answer('Obscur').outcome).toBe('unknown')
   expect(answer('Obscure')).toMatchObject({ outcome: 'hit' })
+})
+
+it('treats a catalog\'s other names for a limit as that limit', () => {
+  let s = m.apply(m.start(p, 0), { type: 'begin', prompt: 0 }, p, 0)
+  s = m.apply(s, { type: 'answer', prompt: 0, text: 'Upper bound' }, p, 0)
+  expect(m.view(s, 0, p).current?.note).toBe('limit')
 })
 
 it('says where the extra answers came from', () => {

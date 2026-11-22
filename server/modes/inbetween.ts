@@ -31,6 +31,8 @@ interface Prompt {
   unit: string
   scale: Scale
   words: [string, string]
+  /** Keys that name a limit: its own, plus other names a catalog knows it by ("kiwi fruit"). */
+  limits: Set<string>
   lo: { name: string; value: number; key: string }
   hi: { name: string; value: number; key: string }
   common: number
@@ -127,12 +129,13 @@ function parsePrompt(raw: unknown, n: number, catalogs: Catalogs): Prompt {
   })
   buildIndex(answers) // hand-written answers must not clash with each other
   let source = text(r.source, `${where} source`)
+  const limits = new Set([lo.key, hi.key])
   let more = (): Answer[] => []
   if (r.catalog !== undefined) {
     const cat = catalogs.get(r.catalog)
     if (!cat) throw new Error(`${where}: no catalog "${r.catalog}"`)
     if (!alpha && cat.unit !== unit) throw new Error(`${where}: catalog "${r.catalog}" is in ${cat.unit}, the prompt in ${unit}`)
-    more = () => fromCatalog(cat.entries, answers, { lo, hi, alpha, scale })
+    more = () => fromCatalog(cat.entries, answers, { limits, alpha, scale, lo, hi })
     source += '. More answers from Wikidata.'
   }
   const index = lazyIndex(() => buildIndex([...answers, ...more()]))
@@ -146,7 +149,7 @@ function parsePrompt(raw: unknown, n: number, catalogs: Catalogs): Prompt {
   if (answers[rarest].tier !== 'milestone') throw new Error(`${where}: rarest must be a milestone answer`)
 
   return {
-    category, title, unit, scale, lo, hi, common, rarest,
+    category, title, unit, scale, lo, hi, common, rarest, limits,
     get index() { return index() },
     question: text(r.question, `${where} question`),
     words: [text(r.words[0], `${where} words`), text(r.words[1], `${where} words`)],
@@ -173,25 +176,39 @@ function lazyIndex(make: () => AnswerIndex<Answer>) {
 }
 
 /**
- * Catalog entries to add under the hand-written answers. An entry sharing any name or alias with
- * a hand answer or a limit is the same thing and is skipped; an alias clashing with an earlier
- * (better known) entry is dropped. In-range entries are tiered by fame rank.
+ * Catalog entries to add under the hand-written answers. An entry sharing a name or alias with a
+ * limit is skipped; one sharing it with a hand answer is the same thing, so its other names join
+ * that answer. An alias clashing with an earlier (better known) entry is dropped. In-range entries are tiered by fame rank.
  */
 function fromCatalog(
   entries: CatalogEntry[], hand: Answer[],
-  p: { lo: { value: number; key: string }; hi: { value: number; key: string }; alpha: boolean; scale: Scale },
+  p: { limits: Set<string>; lo: { value: number }; hi: { value: number }; alpha: boolean; scale: Scale },
 ): Answer[] {
-  const same = new Set([p.lo.key, p.hi.key, ...hand.flatMap((a) => [a.name, ...a.aliases].map(key))])
-  const taken = new Set(same)
+  const limits = new Set([...p.limits])
+  const owner = new Map<string, Answer>()
+  for (const a of hand) for (const s of [a.name, ...a.aliases]) owner.set(key(s), a)
+  const taken = new Set([...limits, ...owner.keys()])
   const out: (Answer & { fame: number })[] = []
   for (const [name, raw, fame, aliases] of entries) {
     const k = key(name)
-    if (!k || taken.has(k) || aliases.some((s) => same.has(key(s)))) continue
+    const keys = [...new Set([name, ...aliases].map(key))].filter(Boolean)
+    if (!k) continue
+    if (keys.some((x) => limits.has(x))) {
+      keys.forEach((x) => !owner.has(x) && p.limits.add(x)) // another name for a limit
+      continue
+    }
+    const own = keys.filter((x) => !taken.has(x))
+    // The same thing as a hand answer: its other names become that answer's aliases ("kiwi fruit" for Kiwi).
+    const twin = keys.map((x) => owner.get(x)).find(Boolean)
+    if (twin) {
+      own.forEach((x) => taken.add(x))
+      twin.aliases.push(...own)
+      continue
+    }
     const value = p.alpha ? alphaKey(name) : raw
-    if (!Number.isFinite(value) || (p.scale === 'log' && value <= 0)) continue
-    const own = [...new Set(aliases.map(key))].filter((a) => a && a !== k && !taken.has(a))
-    ;[k, ...own].forEach((x) => taken.add(x))
-    out.push({ name, aliases: own, value, fame, fuzzy: fame >= FUZZY_FAME })
+    if (!own.includes(k) || !Number.isFinite(value) || (p.scale === 'log' && value <= 0)) continue
+    own.forEach((x) => taken.add(x))
+    out.push({ name, aliases: own.filter((x) => x !== k), value, fame, fuzzy: fame >= FUZZY_FAME })
   }
   for (const a of out) if (inRange(p, a.value)) a.tier = FAME_TIERS.find(([min]) => a.fame >= min)![1]
   return out.map(({ fame: _f, ...a }) => a)
@@ -251,7 +268,8 @@ function apply(s: State, e: InBetweenEvent, p: Puzzle, now: number): State {
   if (e.type === 'timeout') return now >= s.deadline ? record(s, { outcome: 'time', points: 0 }) : s
   if (now > s.deadline + GRACE_MS) return record(s, { outcome: 'time', points: 0 })
   const k = key(e.text)
-  if (k && (k === q.lo.key || k === q.hi.key)) return { ...s, note: 'limit' }
+  void q.index // building the answer list also collects the limits' other names
+  if (k && q.limits.has(k)) return { ...s, note: 'limit' }
   const m = match(q.index, e.text)
   // Like Krillion: a typo or partial answer is filled in for the player to confirm or edit, never scored as typed.
   if (m !== null && q.index.exact.get(k) !== m) return { ...s, note: 'correction', correction: q.index.answers[m].name }
