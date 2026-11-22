@@ -23,6 +23,7 @@
           "common": "Rabbit",
           "rarest": "Platypus",
           "source": "Typical adult weights from Wikipedia species articles",
+          "catalog": "animal-weights",
           "answers": [
             {
               "name": "Rabbit",

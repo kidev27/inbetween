@@ -23,6 +23,7 @@
           "common": "Elephant",
           "rarest": "Ocean sunfish",
           "source": "Typical adult weights from Wikipedia species articles",
+          "catalog": "animal-weights",
           "answers": [
             {
               "name": "Elephant",
@@ -593,6 +594,7 @@
           "common": "Tortoise",
           "rarest": "Cockroach",
           "source": "Top running speeds from Wikipedia, rounded",
+          "catalog": "animal-speeds",
           "answers": [
             {
               "name": "Tortoise",

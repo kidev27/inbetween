@@ -107,7 +107,9 @@ too, under the hand-written ones:
 | `inventions` | ~760 | invention years |
 | `waterfalls` | ~410 | waterfall heights |
 | `countries` | ~200 | populations, countries A to Z |
-| `colours`, `fruits`, `vegetables`, `sports`, `instruments` | 150-850 each | A to Z prompts |
+| `fruits`, `vegetables` | ~670, ~270 | A to Z prompts (kinds of fruit plus fruit plants) |
+| `colours`, `sports`, `instruments` | 230-850 each | A to Z prompts |
+| `animal-weights`, `bird-weights`, `animal-speeds` | ~180, 34, 75 | animal prompts (hand-written table) |
 
 - **Hand-written answers win.** A catalog entry sharing a name or alias with one (or with a limit)
   is the same thing and is skipped, so curated values, tiers and facts stay.
@@ -124,8 +126,15 @@ NODE_USE_ENV_PROXY=1 node scripts/catalogs.ts              # all
 NODE_USE_ENV_PROXY=1 node scripts/catalogs.ts mountains    # one
 ```
 
-`NODE_USE_ENV_PROXY=1` is only needed behind an HTTP proxy. Animal weights and speeds are too
-sparse on Wikidata, so those prompts stay hand-written.
+`NODE_USE_ENV_PROXY=1` is only needed behind an HTTP proxy.
+
+Wikidata misses some things, so two hand-written sources feed the catalogs too (fame is still
+looked up on Wikidata by name):
+
+- `content/sources/animals.tsv`: weight and top speed of common animals, since Wikidata barely
+  records either. Add a row, rebuild `animal-weights bird-weights animal-speeds`.
+- `content/sources/<catalog>.txt`: extra names for a catalog, one `Name|alias|alias` per line
+  (e.g. ice apple in `fruits.txt`).
 
 ## Deploying next to Blinker and HIGH▲LOW▼ on one VM
 

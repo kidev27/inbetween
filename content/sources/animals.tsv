@@ -1,0 +1,186 @@
+# Hand-compiled typical adult weights (kg) and top running speeds (km/h, land sprints only; blank if
+# unknown). Wikidata barely records either. scripts/catalogs.ts turns this into the animal-weights,
+# bird-weights and animal-speeds catalogs and looks up each animal's fame on Wikidata.
+name	aliases	class	kg	kmh
+Jaguar	jaguars	mammal	90	80
+Leopard		mammal	60	58
+Cheetah		mammal	54	110
+Lion	lioness	mammal	190	80
+Tiger		mammal	220	65
+Cougar	puma,mountain lion	mammal	60	72
+Snow leopard		mammal	45	
+Lynx	eurasian lynx	mammal	20	
+Bobcat		mammal	10	48
+Ocelot		mammal	12	
+Serval		mammal	13	
+Caracal		mammal	15	
+House cat	cat,domestic cat,kitten	mammal	4	48
+Dog	domestic dog,puppy	mammal	30	48
+Greyhound		mammal	30	72
+Wolf	gray wolf,grey wolf	mammal	40	64
+Coyote		mammal	14	69
+Red fox	fox	mammal	6	50
+Arctic fox		mammal	4	
+Jackal		mammal	10	56
+Hyena	spotted hyena	mammal	60	60
+African wild dog	wild dog,painted dog	mammal	25	66
+Dingo		mammal	15	
+Grizzly bear	grizzly,brown bear	mammal	270	56
+Polar bear		mammal	450	40
+Black bear	american black bear	mammal	120	48
+Giant panda	panda	mammal	100	32
+Red panda		mammal	5	
+Sloth bear		mammal	100	
+Sun bear		mammal	50	
+Raccoon		mammal	8	24
+Badger		mammal	12	30
+Wolverine		mammal	15	48
+Otter	river otter	mammal	10	
+Sea otter		mammal	30	
+Skunk		mammal	3	16
+Weasel		mammal	0.1	
+Ferret		mammal	1	
+Mink		mammal	1	
+Meerkat		mammal	0.7	
+Mongoose		mammal	3	32
+Elephant	african elephant	mammal	6000	40
+Asian elephant		mammal	4000	
+Rhinoceros	rhino	mammal	2300	55
+Hippopotamus	hippo	mammal	1500	30
+Giraffe		mammal	1200	60
+Zebra		mammal	350	64
+Horse		mammal	500	88
+Donkey		mammal	250	
+Pony		mammal	200	
+Mule		mammal	300	
+Camel		mammal	600	65
+Llama		mammal	150	
+Alpaca		mammal	65	
+Cow	bull,cattle	mammal	700	40
+Bison	buffalo	mammal	900	56
+Water buffalo		mammal	700	
+Yak		mammal	800	
+Moose		mammal	600	56
+Elk	wapiti	mammal	300	72
+Deer	white-tailed deer	mammal	90	64
+Reindeer	caribou	mammal	150	80
+Gazelle	thomson's gazelle	mammal	25	80
+Impala		mammal	50	80
+Springbok		mammal	40	88
+Pronghorn		mammal	50	98
+Wildebeest	gnu	mammal	200	80
+Okapi		mammal	250	
+Tapir		mammal	250	
+Warthog		mammal	80	55
+Wild boar	boar	mammal	100	48
+Pig	hog	mammal	150	17
+Sheep		mammal	75	40
+Goat		mammal	60	
+Mountain goat		mammal	80	
+Ibex		mammal	90	
+Kangaroo	red kangaroo	mammal	55	71
+Wallaby		mammal	15	
+Koala		mammal	9	
+Wombat		mammal	30	40
+Tasmanian devil		mammal	8	
+Platypus		mammal	1.5	
+Echidna		mammal	4	
+Opossum	possum	mammal	3	
+Sloth		mammal	5	0.27
+Armadillo		mammal	5	
+Giant anteater	anteater	mammal	40	
+Aardvark		mammal	60	
+Pangolin		mammal	10	
+Gorilla		mammal	160	40
+Chimpanzee	chimp	mammal	50	40
+Orangutan		mammal	70	
+Bonobo		mammal	40	
+Baboon		mammal	25	45
+Lemur		mammal	2.5	
+Human	person,people,man,woman	mammal	62	45
+Rabbit	bunny	mammal	2	56
+Hare		mammal	4	72
+Squirrel		mammal	0.5	30
+Chipmunk		mammal	0.1	
+Beaver		mammal	20	
+Porcupine		mammal	10	
+Hedgehog		mammal	0.8	7
+Mouse		mammal	0.02	13
+Rat		mammal	0.3	13
+Hamster		mammal	0.15	
+Guinea pig		mammal	1	
+Gerbil		mammal	0.06	
+Capybara		mammal	50	35
+Chinchilla		mammal	0.5	
+Mole		mammal	0.1	
+Fruit bat	flying fox	mammal	1	
+Dolphin	bottlenose dolphin	mammal	200	
+Orca	killer whale	mammal	5000	
+Blue whale	whale	mammal	150000	
+Humpback whale		mammal	30000	
+Sperm whale		mammal	40000	
+Beluga	beluga whale	mammal	1400	
+Narwhal		mammal	1500	
+Walrus		mammal	1200	
+Seal	harbor seal	mammal	100	
+Sea lion		mammal	300	
+Manatee		mammal	500	
+Dugong		mammal	400	
+Ostrich		bird	120	70
+Emu		bird	40	50
+Cassowary		bird	45	50
+Rhea		bird	25	60
+Turkey	wild turkey	bird	9	40
+Chicken	hen	bird	2.5	14
+Duck	mallard	bird	1.5	
+Goose		bird	5	
+Swan	mute swan	bird	11	
+Peacock	peafowl,peahen	bird	5	
+Emperor penguin	penguin	bird	30	
+Pelican		bird	10	
+Flamingo		bird	3	
+Bald eagle	eagle	bird	4.5	
+Golden eagle		bird	5	
+Hawk	red-tailed hawk	bird	1	
+Owl	barn owl	bird	0.5	
+Pigeon	dove	bird	0.35	
+Crow		bird	0.5	
+Raven		bird	1.2	
+Parrot		bird	0.4	
+Albatross		bird	9	
+Andean condor	condor	bird	12	
+Vulture		bird	7	
+Stork		bird	3.5	
+Heron		bird	2	
+Crane		bird	5	
+Seagull	gull	bird	1	
+Kiwi		bird	3	
+Dodo		bird	15	
+Hummingbird		bird	0.004	
+Robin		bird	0.08	
+Sparrow		bird	0.03	
+Roadrunner		bird	0.3	32
+Saltwater crocodile	crocodile,croc	reptile	500	17
+Alligator		reptile	360	17
+Komodo dragon	komodo	reptile	70	20
+Iguana		reptile	5	
+Python		reptile	50	
+Anaconda		reptile	70	
+King cobra	cobra	reptile	6	
+Black mamba	mamba	reptile	1.6	20
+Tortoise	turtle	reptile		0.3
+Giant tortoise	galapagos tortoise	reptile	250	
+Sea turtle		reptile	150	
+Leatherback turtle	leatherback	reptile	600	
+Chameleon		reptile	0.1	
+Gecko		reptile	0.05	
+Frog	bullfrog	amphibian	0.5	
+Great white shark	great white,shark	fish	1100	
+Whale shark		fish	19000	
+Bluefin tuna	tuna	fish	250	
+Swordfish		fish	100	
+Salmon		fish	5	
+Goldfish		fish	0.01	
+Giant pacific octopus	octopus	mollusc	15	
+Snail		mollusc	0.005	0.05
+Cockroach		insect	0.002	5.4

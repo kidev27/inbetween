@@ -365,6 +365,7 @@
           "common": "Dog",
           "rarest": "Black mamba",
           "source": "Top running speeds from Wikipedia, rounded",
+          "catalog": "animal-speeds",
           "answers": [
             {
               "name": "Dog",
@@ -740,6 +741,7 @@
           "common": "Turkey",
           "rarest": "Kiwi",
           "source": "Typical adult weights from Wikipedia species articles",
+          "catalog": "bird-weights",
           "answers": [
             {
               "name": "Turkey",
