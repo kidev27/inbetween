@@ -22,7 +22,7 @@ const p = m.parse(day({ catalog: 'things' }))
 const answer = (text: string) => {
   let s = m.apply(m.start(p, 0), { type: 'begin', prompt: 0 }, p, 0)
   s = m.apply(s, { type: 'answer', prompt: 0, text }, p, 0)
-  // Confirm a filled-in correction, or use the second try if the first was unknown.
+  // Confirm a filled-in correction.
   s = m.apply(s, { type: 'answer', prompt: 0, text: m.view(s, 0, p).current?.correction ?? text }, p, 0)
   return m.view(s, 0, p).answered[0]
 }
@@ -40,7 +40,7 @@ it('adds catalog answers under the hand-written ones, tiered by how well known t
 
 it('matches typos only on well-known catalog names', () => {
   expect(answer('Faamous')).toMatchObject({ answer: { name: 'Famous' } })
-  expect(answer('Obscur').outcome).toBe('unknown')
+  expect(answer('Obscur')).toBeUndefined() // not on the list: nothing recorded, the player keeps trying
   expect(answer('Obscure')).toMatchObject({ outcome: 'hit' })
 })
 

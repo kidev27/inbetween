@@ -60,8 +60,6 @@ interface State {
   recs: Rec[]
   /** Deadline of the current prompt; null until the player begins it. */
   deadline: number | null
-  /** The one free retry for an answer that is not on the list has been used. */
-  retried: boolean
   note: 'limit' | 'unknown' | 'correction' | null
   /** The full name a typo or partial answer matched; the player confirms it by sending it back. */
   correction?: string
@@ -256,14 +254,14 @@ function answered(p: Prompt, index: number, r: Rec): Answered {
   }
 }
 
-const record = (s: State, r: Rec): State => ({ recs: [...s.recs, r], deadline: null, retried: false, note: null })
+const record = (s: State, r: Rec): State => ({ recs: [...s.recs, r], deadline: null, note: null })
 
 function apply(s: State, e: InBetweenEvent, p: Puzzle, now: number): State {
   const i = s.recs.length
   // Only the current prompt takes events, so double taps and stale requests are no-ops.
   if (e.prompt !== i || i >= PROMPTS) return s
   const q = p.prompts[i]
-  if (e.type === 'begin') return s.deadline === null ? { ...s, deadline: now + TIME_MS, retried: false, note: null } : s
+  if (e.type === 'begin') return s.deadline === null ? { ...s, deadline: now + TIME_MS, note: null } : s
   if (s.deadline === null) return s
   if (e.type === 'timeout') return now >= s.deadline ? record(s, { outcome: 'time', points: 0 }) : s
   if (now > s.deadline + GRACE_MS) return record(s, { outcome: 'time', points: 0 })
@@ -274,8 +272,8 @@ function apply(s: State, e: InBetweenEvent, p: Puzzle, now: number): State {
   // Like Krillion: a typo or partial answer is filled in for the player to confirm or edit, never scored as typed.
   if (m !== null && q.index.exact.get(k) !== m) return { ...s, note: 'correction', correction: q.index.answers[m].name }
   if (m !== null) return record(s, judge(q, m))
-  if (!s.retried) return { ...s, retried: true, note: 'unknown' }
-  return record(s, { outcome: 'unknown', points: 0, text: e.text.trim().slice(0, MAX_ANSWER_LENGTH) })
+  // Not on the list: keep trying until time runs out.
+  return { ...s, note: 'unknown' }
 }
 
 const total = (s: State) => s.recs.reduce((n, r) => n + r.points, 0)
@@ -297,7 +295,7 @@ export const makeInbetween = (catalogs: Catalogs): ServerMode<Puzzle, State, InB
   },
   parse: parse(catalogs),
   prompt: () => `${PROMPTS} prompts`,
-  start: () => ({ recs: [], deadline: null, retried: false, note: null }),
+  start: () => ({ recs: [], deadline: null, note: null }),
   apply,
   view: (s, now, p) => {
     const i = s.recs.length
