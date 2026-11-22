@@ -2,7 +2,7 @@
 //   NODE_USE_ENV_PROXY=1 node scripts/catalogs.ts [id ...]
 // Each entry is [name, value, fame, aliases]. Fame is how many Wikipedias have an article on it,
 // which the game turns into rarity tiers (famous answers are common picks).
-import { writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
 interface Spec {
@@ -15,6 +15,8 @@ interface Spec {
   scale?: number
   /** Big catalogs time out as one query: run it once per part, replacing {PART}, and merge. */
   parts?: string[]
+  /** Build from a hand-written table in content/sources/ instead of a query: which column, which rows. */
+  table?: { file: string; column: string; only?: (row: Record<string, string>) => boolean }
 }
 
 const ALIASES = `OPTIONAL { ?item skos:altLabel ?alias . FILTER(LANG(?alias) = "en") }`
@@ -82,15 +84,47 @@ export const SPECS: Spec[] = [
   },
   ...([
     ['colours', 'wdt:P31 wd:Q1075', 3, 'Wikidata colours (Q1075)'],
-    ['fruits', 'wdt:P279+ wd:Q3314483', 6, 'Wikidata kinds of fruit (Q3314483)'],
-    ['vegetables', 'wdt:P279+ wd:Q11004', 6, 'Wikidata kinds of vegetable (Q11004)'],
+    // Kinds of fruit, plus the plants that are the source of one (many fruits only exist as the plant).
+    ['fruits', '{ ?item wdt:P279+ wd:Q3314483 } UNION { ?item wdt:P1672 ?f . ?f wdt:P279* wd:Q3314483 }', 3, 'Wikidata kinds of fruit (Q3314483) and fruit plants'],
+    ['vegetables', '{ ?item wdt:P279+ wd:Q11004 } UNION { ?item wdt:P1672 ?f . ?f wdt:P279* wd:Q11004 }', 3, 'Wikidata kinds of vegetable (Q11004) and vegetable plants'],
     ['sports', 'wdt:P31 wd:Q31629', 8, 'Wikidata types of sport (Q31629)'],
     ['instruments', 'wdt:P279+ wd:Q34379', 10, 'Wikidata musical instruments (Q34379)'],
   ] as const).map(([id, path, min, source]): Spec => ({
     id, unit: 'alpha', source,
-    query: `${SELECT_NAMES} WHERE { ?item ${path} ; wikibase:sitelinks ?links . FILTER(?links >= ${min}) ${LABEL} ${COMMON} ${ALIASES} } ${GROUP}`,
+    query: `${SELECT_NAMES} WHERE { ${path.includes('?item') ? path : `?item ${path} .`} ?item wikibase:sitelinks ?links . FILTER(?links >= ${min}) ${LABEL} ${COMMON} ${ALIASES} } ${GROUP}`,
   })),
+  // Wikidata barely records animal weights or speeds, so these come from a hand-written table.
+  { id: 'animal-weights', unit: 'kg', source: 'Typical adult weights, hand-compiled', query: '', table: { file: 'animals.tsv', column: 'kg' } },
+  { id: 'bird-weights', unit: 'kg', source: 'Typical adult weights, hand-compiled', query: '', table: { file: 'animals.tsv', column: 'kg', only: (r) => r.class === 'bird' } },
+  { id: 'animal-speeds', unit: 'km/h', source: 'Top running speeds, hand-compiled', query: '', table: { file: 'animals.tsv', column: 'kmh' } },
 ]
+
+const source = (file: string) => fileURLToPath(new URL(`../content/sources/${file}`, import.meta.url))
+
+/** Rows of a tab-separated table; lines starting with # are comments, the first other line is the header. */
+function readTable(file: string) {
+  const [head, ...rows] = readFileSync(source(file), 'utf8').split('\n').filter((l) => l.trim() && !l.startsWith('#')).map((l) => l.split('\t'))
+  return rows.map((r) => Object.fromEntries(head.map((h, i) => [h.trim(), (r[i] ?? '').trim()])))
+}
+
+/** Names Wikidata misses, from content/sources/<id>.txt: one "Name|alias|alias" per line. */
+const extras = (id: string) =>
+  existsSync(source(`${id}.txt`))
+    ? readFileSync(source(`${id}.txt`), 'utf8').split('\n').filter((l) => l.trim() && !l.startsWith('#')).map((l) => l.split('|').map((x) => x.trim()))
+    : []
+
+/** Fame (Wikipedias with an article) of things known only by name: the best known item with that label. */
+async function fameOf(names: string[]) {
+  const out = new Map<string, number>()
+  for (let i = 0; i < names.length; i += 80) {
+    const values = names.slice(i, i + 80).flatMap((n) => [n, n.toLowerCase()]).map((n) => `${JSON.stringify(n)}@en`).join(' ')
+    for (const r of await sparql(`SELECT ?n (MAX(?links) AS ?fame) WHERE { VALUES ?n { ${values} } ?item rdfs:label|wdt:P1843 ?n ; wikibase:sitelinks ?links . } GROUP BY ?n`)) {
+      const k = r.n.value.toLowerCase()
+      out.set(k, Math.max(out.get(k) ?? 0, Number(r.fame.value)))
+    }
+  }
+  return out
+}
 
 /** Wikidata rate-limits (429) and times out (5xx) under load: retry with backoff. */
 async function sparql(query: string, attempt = 1): Promise<Record<string, { value: string }>[]> {
@@ -117,7 +151,7 @@ const usable = (s: string) => s.length >= 2 && s.length <= 40 && !/^Q\d+$/.test(
 
 async function build(spec: Spec) {
   const rows = []
-  for (const part of spec.parts ?? ['']) {
+  for (const part of spec.table ? [] : spec.parts ?? ['']) {
     try {
       rows.push(...(await sparql(spec.query.replace('{PART}', part))))
     } catch (e) {
@@ -142,6 +176,15 @@ async function build(spec: Spec) {
     const prev = byName.get(name.toLowerCase())
     // Same name twice (e.g. two mountains called Dom): keep the better known one.
     if (!prev || prev[2] < fame) byName.set(name.toLowerCase(), [name, round(value), fame, aliases.slice(0, 8)])
+  }
+  // Hand-written rows and extras: fame from Wikidata by name, 1 if it has no article anywhere.
+  const table = spec.table ? readTable(spec.table.file).filter((r) => r[spec.table!.column] && (spec.table!.only?.(r) ?? true)) : []
+  const more = [...table.map((r) => [r.name, ...r.aliases.split(',')]), ...extras(spec.id)].map((n) => n.filter(Boolean))
+  const fame = more.length ? await fameOf(more.map((n) => n[0])) : new Map()
+  for (const [name, ...aliases] of more) {
+    if (byName.has(name.toLowerCase())) continue
+    const value = spec.table ? Number(table.find((r) => r.name === name)![spec.table.column]) : 0
+    byName.set(name.toLowerCase(), [name, value, fame.get(name.toLowerCase()) ?? 1, aliases])
   }
   const entries = [...byName.values()].sort((a, b) => b[2] - a[2])
   const file = fileURLToPath(new URL(`../content/catalogs/${spec.id}.json`, import.meta.url))

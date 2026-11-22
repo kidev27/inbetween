@@ -1,0 +1,18 @@
+# Fruits Wikidata doesn't list as fruit. One per line: Name|alias|alias
+Ice apple|nungu|palmyra fruit|toddy palm fruit|tadgola|taal
+Cherry|cherries|sweet cherry|sour cherry
+Cantaloupe|rockmelon|muskmelon
+Sapodilla|chikoo|chiku|sapota
+Jamun|java plum|black plum
+Elderberry|elderberries
+Boysenberry
+Loganberry
+Tangerine
+Jabuticaba
+Salak|snake fruit
+Mangosteen
+Loquat
+Plantain
+Acai|açaí|acai berry
+Ackee|akee
+Physalis|cape gooseberry|golden berry|goldenberry

@@ -23,6 +23,7 @@
           "common": "Dog",
           "rarest": "Okapi",
           "source": "Typical adult weights from Wikipedia species articles",
+          "catalog": "animal-weights",
           "answers": [
             {
               "name": "Dog",
@@ -599,6 +600,7 @@
           "common": "Horse",
           "rarest": "Pronghorn",
           "source": "Top running speeds from Wikipedia; sprint bursts, not cruising speeds",
+          "catalog": "animal-speeds",
           "answers": [
             {
               "name": "Horse",

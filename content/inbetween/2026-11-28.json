@@ -289,6 +289,7 @@
           "common": "Lion",
           "rarest": "Tapir",
           "source": "Typical adult weights from Wikipedia species articles",
+          "catalog": "animal-weights",
           "answers": [
             {
               "name": "Lion",
@@ -1054,6 +1055,7 @@
           "common": "Dog",
           "rarest": "Rhinoceros",
           "source": "Top running speeds from Wikipedia, rounded",
+          "catalog": "animal-speeds",
           "answers": [
             {
               "name": "Dog",

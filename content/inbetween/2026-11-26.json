@@ -525,6 +525,7 @@
           "common": "Horse",
           "rarest": "Giant tortoise",
           "source": "Typical adult weights from Wikipedia species articles",
+          "catalog": "animal-weights",
           "answers": [
             {
               "name": "Horse",
