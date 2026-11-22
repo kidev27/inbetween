@@ -1,0 +1,1343 @@
+{
+  "rounds": [
+    {
+      "prompts": [
+        {
+          "category": "population",
+          "title": "Countries by population",
+          "question": "Name a country with more people than Australia but fewer than Germany.",
+          "unit": "million",
+          "scale": "log",
+          "words": [
+            "many people",
+            "few people"
+          ],
+          "lo": {
+            "name": "Australia",
+            "value": 27
+          },
+          "hi": {
+            "name": "Germany",
+            "value": 84
+          },
+          "common": "United Kingdom",
+          "rarest": "Uzbekistan",
+          "source": "UN World Population Prospects 2024, rounded",
+          "answers": [
+            {
+              "name": "United Kingdom",
+              "value": 69,
+              "tier": "pin",
+              "aliases": [
+                "uk",
+                "britain",
+                "great britain"
+              ]
+            },
+            {
+              "name": "France",
+              "value": 68,
+              "tier": "pin"
+            },
+            {
+              "name": "Italy",
+              "value": 59,
+              "tier": "pin"
+            },
+            {
+              "name": "Spain",
+              "value": 48,
+              "tier": "pin"
+            },
+            {
+              "name": "South Korea",
+              "value": 52,
+              "tier": "ruler",
+              "aliases": [
+                "korea"
+              ]
+            },
+            {
+              "name": "Canada",
+              "value": 40,
+              "tier": "ruler"
+            },
+            {
+              "name": "Argentina",
+              "value": 46,
+              "tier": "ruler"
+            },
+            {
+              "name": "South Africa",
+              "value": 63,
+              "tier": "ruler"
+            },
+            {
+              "name": "Thailand",
+              "value": 72,
+              "tier": "ruler"
+            },
+            {
+              "name": "Kenya",
+              "value": 56,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Colombia",
+              "value": 53,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Poland",
+              "value": 37,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Morocco",
+              "value": 38,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Iraq",
+              "value": 46,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Algeria",
+              "value": 46,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Peru",
+              "value": 34,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Saudi Arabia",
+              "value": 33,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Malaysia",
+              "value": 35,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Venezuela",
+              "value": 28,
+              "tier": "milestone"
+            },
+            {
+              "name": "Afghanistan",
+              "value": 42,
+              "tier": "milestone"
+            },
+            {
+              "name": "Uganda",
+              "value": 49,
+              "tier": "milestone"
+            },
+            {
+              "name": "Sudan",
+              "value": 50,
+              "tier": "milestone"
+            },
+            {
+              "name": "Tanzania",
+              "value": 68,
+              "tier": "milestone"
+            },
+            {
+              "name": "Myanmar",
+              "value": 55,
+              "tier": "milestone",
+              "aliases": [
+                "burma"
+              ]
+            },
+            {
+              "name": "Uzbekistan",
+              "value": 36,
+              "tier": "milestone",
+              "fact": "Uzbekistan is one of only two countries that are landlocked by landlocked countries."
+            },
+            {
+              "name": "Nepal",
+              "value": 30,
+              "tier": "milestone"
+            },
+            {
+              "name": "Ghana",
+              "value": 34,
+              "tier": "milestone"
+            },
+            {
+              "name": "Mozambique",
+              "value": 34,
+              "tier": "milestone"
+            },
+            {
+              "name": "Angola",
+              "value": 37,
+              "tier": "milestone"
+            },
+            {
+              "name": "Yemen",
+              "value": 34,
+              "tier": "milestone"
+            },
+            {
+              "name": "Turkey",
+              "value": 86,
+              "aliases": [
+                "turkiye"
+              ]
+            },
+            {
+              "name": "North Korea",
+              "value": 26
+            },
+            {
+              "name": "Japan",
+              "value": 124
+            },
+            {
+              "name": "United States",
+              "value": 340,
+              "aliases": [
+                "usa",
+                "us",
+                "america"
+              ]
+            },
+            {
+              "name": "Netherlands",
+              "value": 18,
+              "aliases": [
+                "holland"
+              ]
+            },
+            {
+              "name": "Sweden",
+              "value": 10.6
+            },
+            {
+              "name": "Iran",
+              "value": 91
+            },
+            {
+              "name": "Vietnam",
+              "value": 100
+            },
+            {
+              "name": "Egypt",
+              "value": 114
+            },
+            {
+              "name": "Mexico",
+              "value": 130
+            },
+            {
+              "name": "Brazil",
+              "value": 212
+            },
+            {
+              "name": "Russia",
+              "value": 144
+            },
+            {
+              "name": "China",
+              "value": 1410
+            },
+            {
+              "name": "India",
+              "value": 1440
+            },
+            {
+              "name": "New Zealand",
+              "value": 5.2
+            },
+            {
+              "name": "Ireland",
+              "value": 5.3
+            },
+            {
+              "name": "Greece",
+              "value": 10.4
+            }
+          ]
+        },
+        {
+          "category": "weight",
+          "title": "Animals by weight",
+          "question": "Name an animal heavier than a hamster but lighter than a dog.",
+          "unit": "kg",
+          "scale": "log",
+          "words": [
+            "heavy",
+            "light"
+          ],
+          "lo": {
+            "name": "Hamster",
+            "value": 0.15
+          },
+          "hi": {
+            "name": "Dog",
+            "value": 30
+          },
+          "common": "Cat",
+          "rarest": "Pangolin",
+          "source": "Typical adult weights from Wikipedia species articles",
+          "answers": [
+            {
+              "name": "Cat",
+              "value": 4,
+              "tier": "pin",
+              "aliases": [
+                "house cat",
+                "kitten"
+              ]
+            },
+            {
+              "name": "Rabbit",
+              "value": 2,
+              "tier": "pin",
+              "aliases": [
+                "bunny"
+              ]
+            },
+            {
+              "name": "Guinea pig",
+              "value": 1,
+              "tier": "pin"
+            },
+            {
+              "name": "Chicken",
+              "value": 2.5,
+              "tier": "pin",
+              "aliases": [
+                "hen"
+              ]
+            },
+            {
+              "name": "Fox",
+              "value": 6,
+              "tier": "ruler",
+              "aliases": [
+                "red fox"
+              ]
+            },
+            {
+              "name": "Squirrel",
+              "value": 0.5,
+              "tier": "ruler"
+            },
+            {
+              "name": "Rat",
+              "value": 0.3,
+              "tier": "ruler"
+            },
+            {
+              "name": "Duck",
+              "value": 1.5,
+              "tier": "ruler"
+            },
+            {
+              "name": "Ferret",
+              "value": 1,
+              "tier": "ruler"
+            },
+            {
+              "name": "Raccoon",
+              "value": 8,
+              "tier": "ruler"
+            },
+            {
+              "name": "Hedgehog",
+              "value": 0.8,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Skunk",
+              "value": 3,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Beaver",
+              "value": 20,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Koala",
+              "value": 9,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Otter",
+              "value": 10,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Badger",
+              "value": 12,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Turkey",
+              "value": 8,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Armadillo",
+              "value": 5,
+              "tier": "milestone"
+            },
+            {
+              "name": "Platypus",
+              "value": 1.5,
+              "tier": "milestone"
+            },
+            {
+              "name": "Meerkat",
+              "value": 0.7,
+              "tier": "milestone"
+            },
+            {
+              "name": "Pangolin",
+              "value": 10,
+              "tier": "milestone",
+              "fact": "Pangolins are covered in scales made of keratin, like your fingernails."
+            },
+            {
+              "name": "Red panda",
+              "value": 5,
+              "tier": "milestone"
+            },
+            {
+              "name": "Lemur",
+              "value": 2.5,
+              "tier": "milestone"
+            },
+            {
+              "name": "Sloth",
+              "value": 5,
+              "tier": "milestone"
+            },
+            {
+              "name": "Porcupine",
+              "value": 10,
+              "tier": "milestone"
+            },
+            {
+              "name": "Tasmanian devil",
+              "value": 8,
+              "tier": "milestone"
+            },
+            {
+              "name": "Opossum",
+              "value": 3,
+              "tier": "milestone",
+              "aliases": [
+                "possum"
+              ]
+            },
+            {
+              "name": "Mouse",
+              "value": 0.02
+            },
+            {
+              "name": "Horse",
+              "value": 500
+            },
+            {
+              "name": "Elephant",
+              "value": 6000
+            },
+            {
+              "name": "Lion",
+              "value": 190
+            },
+            {
+              "name": "Wolf",
+              "value": 40
+            },
+            {
+              "name": "Sheep",
+              "value": 75
+            },
+            {
+              "name": "Human",
+              "value": 62,
+              "aliases": [
+                "person"
+              ]
+            },
+            {
+              "name": "Goldfish",
+              "value": 0.01
+            }
+          ]
+        },
+        {
+          "category": "year",
+          "title": "Inventions by year",
+          "question": "Name an invention from after the printing press but before the steam engine.",
+          "unit": "year",
+          "scale": "linear",
+          "words": [
+            "late",
+            "early"
+          ],
+          "lo": {
+            "name": "Printing press",
+            "value": 1440
+          },
+          "hi": {
+            "name": "Steam engine",
+            "value": 1712
+          },
+          "common": "Telescope",
+          "rarest": "Slide rule",
+          "source": "Dates of first known working version, from Wikipedia",
+          "answers": [
+            {
+              "name": "Telescope",
+              "value": 1608,
+              "tier": "pin",
+              "fact": "The first telescopes came from the Netherlands; Galileo improved on them."
+            },
+            {
+              "name": "Microscope",
+              "value": 1590,
+              "tier": "pin"
+            },
+            {
+              "name": "Pocket watch",
+              "value": 1510,
+              "tier": "ruler",
+              "aliases": [
+                "watch"
+              ]
+            },
+            {
+              "name": "Pencil",
+              "value": 1564,
+              "tier": "ruler"
+            },
+            {
+              "name": "Thermometer",
+              "value": 1593,
+              "tier": "ruler"
+            },
+            {
+              "name": "Barometer",
+              "value": 1643,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Mechanical calculator",
+              "value": 1642,
+              "tier": "yardstick",
+              "aliases": [
+                "calculator",
+                "pascaline"
+              ]
+            },
+            {
+              "name": "Pendulum clock",
+              "value": 1656,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Newspaper",
+              "value": 1605,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Piano",
+              "value": 1700,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Slide rule",
+              "value": 1622,
+              "tier": "milestone",
+              "fact": "Apollo astronauts carried slide rules as backup calculators."
+            },
+            {
+              "name": "Flush toilet",
+              "value": 1596,
+              "tier": "milestone",
+              "aliases": [
+                "toilet"
+              ],
+              "fact": "Queen Elizabeth I's godson John Harington built a flush toilet in 1596."
+            },
+            {
+              "name": "Submarine",
+              "value": 1620,
+              "tier": "milestone"
+            },
+            {
+              "name": "Air pump",
+              "value": 1650,
+              "tier": "milestone",
+              "aliases": [
+                "vacuum pump"
+              ]
+            },
+            {
+              "name": "Light bulb",
+              "value": 1879,
+              "aliases": [
+                "lightbulb"
+              ]
+            },
+            {
+              "name": "Telephone",
+              "value": 1876,
+              "aliases": [
+                "phone"
+              ]
+            },
+            {
+              "name": "Compass",
+              "value": 1100
+            },
+            {
+              "name": "Gunpowder",
+              "value": 900
+            },
+            {
+              "name": "Paper",
+              "value": 105
+            },
+            {
+              "name": "Eyeglasses",
+              "value": 1286,
+              "aliases": [
+                "glasses",
+                "spectacles"
+              ]
+            },
+            {
+              "name": "Car",
+              "value": 1886
+            },
+            {
+              "name": "Steam locomotive",
+              "value": 1804,
+              "aliases": [
+                "train"
+              ]
+            },
+            {
+              "name": "Hot air balloon",
+              "value": 1783
+            },
+            {
+              "name": "Battery",
+              "value": 1800
+            }
+          ]
+        },
+        {
+          "category": "landmark",
+          "title": "Landmarks by height",
+          "question": "Name a landmark taller than the Statue of Liberty but shorter than the Great Pyramid.",
+          "unit": "m",
+          "scale": "linear",
+          "words": [
+            "tall",
+            "short"
+          ],
+          "lo": {
+            "name": "Statue of Liberty",
+            "value": 93
+          },
+          "hi": {
+            "name": "Great Pyramid",
+            "value": 139
+          },
+          "common": "Big Ben",
+          "rarest": "Wembley Arch",
+          "source": "Heights from Wikipedia, rounded to the metre",
+          "answers": [
+            {
+              "name": "Big Ben",
+              "value": 96,
+              "tier": "pin",
+              "aliases": [
+                "elizabeth tower"
+              ]
+            },
+            {
+              "name": "London Eye",
+              "value": 135,
+              "tier": "pin"
+            },
+            {
+              "name": "St Paul's Cathedral",
+              "value": 111,
+              "tier": "ruler",
+              "aliases": [
+                "st pauls",
+                "saint pauls cathedral"
+              ]
+            },
+            {
+              "name": "St Peter's Basilica",
+              "value": 137,
+              "tier": "yardstick",
+              "aliases": [
+                "st peters",
+                "saint peters basilica"
+              ]
+            },
+            {
+              "name": "Sydney Harbour Bridge",
+              "value": 134,
+              "tier": "yardstick",
+              "aliases": [
+                "harbour bridge"
+              ]
+            },
+            {
+              "name": "Milan Cathedral",
+              "value": 108,
+              "tier": "yardstick",
+              "aliases": [
+                "duomo di milano"
+              ]
+            },
+            {
+              "name": "Salisbury Cathedral",
+              "value": 123,
+              "tier": "milestone"
+            },
+            {
+              "name": "Royal Liver Building",
+              "value": 98,
+              "tier": "milestone",
+              "aliases": [
+                "liver building"
+              ]
+            },
+            {
+              "name": "Wembley Arch",
+              "value": 133,
+              "tier": "milestone",
+              "aliases": [
+                "wembley",
+                "wembley stadium"
+              ],
+              "fact": "Wembley's arch is the longest single-span roof structure in the world."
+            },
+            {
+              "name": "Strasbourg Cathedral",
+              "value": 142
+            },
+            {
+              "name": "Washington National Cathedral",
+              "value": 91
+            },
+            {
+              "name": "Space Needle",
+              "value": 184
+            },
+            {
+              "name": "Washington Monument",
+              "value": 169
+            },
+            {
+              "name": "Taj Mahal",
+              "value": 73
+            },
+            {
+              "name": "Leaning Tower of Pisa",
+              "value": 56,
+              "aliases": [
+                "leaning tower",
+                "pisa"
+              ]
+            },
+            {
+              "name": "Tower Bridge",
+              "value": 65
+            },
+            {
+              "name": "Flatiron Building",
+              "value": 87,
+              "aliases": [
+                "flatiron"
+              ]
+            },
+            {
+              "name": "Eiffel Tower",
+              "value": 330,
+              "aliases": [
+                "eiffel"
+              ]
+            },
+            {
+              "name": "Colosseum",
+              "value": 48
+            },
+            {
+              "name": "Hagia Sophia",
+              "value": 55
+            }
+          ]
+        },
+        {
+          "category": "speed",
+          "title": "Animals by speed",
+          "question": "Name an animal faster than a house cat but slower than a horse.",
+          "unit": "km/h",
+          "scale": "log",
+          "words": [
+            "fast",
+            "slow"
+          ],
+          "lo": {
+            "name": "House cat",
+            "value": 48
+          },
+          "hi": {
+            "name": "Horse",
+            "value": 88
+          },
+          "common": "Greyhound",
+          "rarest": "Warthog",
+          "source": "Top running speeds from Wikipedia; sprint bursts, not cruising speeds",
+          "answers": [
+            {
+              "name": "Greyhound",
+              "value": 72,
+              "tier": "pin"
+            },
+            {
+              "name": "Lion",
+              "value": 80,
+              "tier": "pin"
+            },
+            {
+              "name": "Zebra",
+              "value": 64,
+              "tier": "pin"
+            },
+            {
+              "name": "Kangaroo",
+              "value": 71,
+              "tier": "ruler"
+            },
+            {
+              "name": "Ostrich",
+              "value": 70,
+              "tier": "ruler"
+            },
+            {
+              "name": "Deer",
+              "value": 64,
+              "tier": "ruler"
+            },
+            {
+              "name": "Rabbit",
+              "value": 56,
+              "tier": "ruler",
+              "aliases": [
+                "bunny"
+              ]
+            },
+            {
+              "name": "Hare",
+              "value": 72,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Coyote",
+              "value": 69,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Giraffe",
+              "value": 60,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Grizzly bear",
+              "value": 56,
+              "tier": "yardstick",
+              "aliases": [
+                "grizzly"
+              ]
+            },
+            {
+              "name": "Elk",
+              "value": 72,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Wildebeest",
+              "value": 80,
+              "tier": "milestone",
+              "aliases": [
+                "gnu"
+              ]
+            },
+            {
+              "name": "Thomson's gazelle",
+              "value": 80,
+              "tier": "milestone",
+              "aliases": [
+                "gazelle"
+              ]
+            },
+            {
+              "name": "Hyena",
+              "value": 60,
+              "tier": "milestone"
+            },
+            {
+              "name": "African wild dog",
+              "value": 66,
+              "tier": "milestone",
+              "aliases": [
+                "wild dog",
+                "painted dog"
+              ]
+            },
+            {
+              "name": "Emu",
+              "value": 50,
+              "tier": "milestone"
+            },
+            {
+              "name": "Warthog",
+              "value": 55,
+              "tier": "milestone",
+              "fact": "Warthogs run with their tails held straight up."
+            },
+            {
+              "name": "Roadrunner",
+              "value": 32,
+              "fact": "A real roadrunner tops out at about 32 km/h."
+            },
+            {
+              "name": "Human",
+              "value": 45,
+              "aliases": [
+                "person"
+              ]
+            },
+            {
+              "name": "Cheetah",
+              "value": 110
+            },
+            {
+              "name": "Pronghorn",
+              "value": 98
+            },
+            {
+              "name": "Elephant",
+              "value": 40
+            },
+            {
+              "name": "Dog",
+              "value": 48
+            },
+            {
+              "name": "Snail",
+              "value": 0.05
+            },
+            {
+              "name": "Tortoise",
+              "value": 0.3,
+              "aliases": [
+                "turtle"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "alpha",
+          "title": "Colours, A to Z",
+          "question": "Name a colour that comes after green but before red in the alphabet.",
+          "unit": "alpha",
+          "scale": "linear",
+          "words": [
+            "late",
+            "early"
+          ],
+          "lo": {
+            "name": "Green"
+          },
+          "hi": {
+            "name": "Red"
+          },
+          "common": "Purple",
+          "rarest": "Puce",
+          "source": "Alphabetical order of the English names",
+          "answers": [
+            {
+              "name": "Grey",
+              "tier": "pin",
+              "aliases": [
+                "gray"
+              ]
+            },
+            {
+              "name": "Indigo",
+              "tier": "pin"
+            },
+            {
+              "name": "Orange",
+              "tier": "pin"
+            },
+            {
+              "name": "Pink",
+              "tier": "pin"
+            },
+            {
+              "name": "Purple",
+              "tier": "pin"
+            },
+            {
+              "name": "Lavender",
+              "tier": "ruler"
+            },
+            {
+              "name": "Lilac",
+              "tier": "ruler"
+            },
+            {
+              "name": "Magenta",
+              "tier": "ruler"
+            },
+            {
+              "name": "Maroon",
+              "tier": "ruler"
+            },
+            {
+              "name": "Navy",
+              "tier": "ruler",
+              "aliases": [
+                "navy blue"
+              ]
+            },
+            {
+              "name": "Lime",
+              "tier": "ruler"
+            },
+            {
+              "name": "Mint",
+              "tier": "ruler"
+            },
+            {
+              "name": "Ivory",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Khaki",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Mauve",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Ochre",
+              "tier": "yardstick",
+              "aliases": [
+                "ocher"
+              ]
+            },
+            {
+              "name": "Peach",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Olive",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Plum",
+              "tier": "yardstick"
+            },
+            {
+              "name": "Jade",
+              "tier": "milestone"
+            },
+            {
+              "name": "Periwinkle",
+              "tier": "milestone"
+            },
+            {
+              "name": "Puce",
+              "tier": "milestone",
+              "fact": "Puce is French for flea: it is the colour of one."
+            },
+            {
+              "name": "Mustard",
+              "tier": "milestone"
+            },
+            {
+              "name": "Hazel",
+              "tier": "milestone"
+            },
+            {
+              "name": "Blue"
+            },
+            {
+              "name": "Black"
+            },
+            {
+              "name": "Brown"
+            },
+            {
+              "name": "White"
+            },
+            {
+              "name": "Yellow"
+            },
+            {
+              "name": "Silver"
+            },
+            {
+              "name": "Teal"
+            },
+            {
+              "name": "Turquoise"
+            },
+            {
+              "name": "Violet"
+            },
+            {
+              "name": "Cyan"
+            },
+            {
+              "name": "Gold"
+            },
+            {
+              "name": "Beige"
+            },
+            {
+              "name": "Crimson"
+            },
+            {
+              "name": "Scarlet"
+            },
+            {
+              "name": "Amber"
+            },
+            {
+              "name": "Ruby"
+            }
+          ]
+        },
+        {
+          "category": "mountain",
+          "title": "Mountains by height",
+          "question": "Name a mountain taller than Mount Fuji but shorter than Mont Blanc.",
+          "unit": "m",
+          "scale": "linear",
+          "words": [
+            "tall",
+            "short"
+          ],
+          "lo": {
+            "name": "Mount Fuji",
+            "value": 3776
+          },
+          "hi": {
+            "name": "Mont Blanc",
+            "value": 4806
+          },
+          "common": "Matterhorn",
+          "rarest": "Toubkal",
+          "source": "Summit heights from Wikipedia",
+          "answers": [
+            {
+              "name": "Matterhorn",
+              "value": 4478,
+              "tier": "pin"
+            },
+            {
+              "name": "Mount Rainier",
+              "value": 4392,
+              "tier": "ruler",
+              "aliases": [
+                "rainier"
+              ]
+            },
+            {
+              "name": "Mount Whitney",
+              "value": 4421,
+              "tier": "ruler",
+              "aliases": [
+                "whitney"
+              ]
+            },
+            {
+              "name": "Pikes Peak",
+              "value": 4302,
+              "tier": "ruler"
+            },
+            {
+              "name": "Jungfrau",
+              "value": 4158,
+              "tier": "ruler"
+            },
+            {
+              "name": "Eiger",
+              "value": 3967,
+              "tier": "ruler"
+            },
+            {
+              "name": "Mount Elbert",
+              "value": 4401,
+              "tier": "yardstick",
+              "aliases": [
+                "elbert"
+              ]
+            },
+            {
+              "name": "Monte Rosa",
+              "value": 4634,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Monch",
+              "value": 4110,
+              "tier": "yardstick",
+              "aliases": [
+                "mönch"
+              ]
+            },
+            {
+              "name": "Grand Teton",
+              "value": 4199,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Mount Shasta",
+              "value": 4322,
+              "tier": "yardstick",
+              "aliases": [
+                "shasta"
+              ]
+            },
+            {
+              "name": "Mauna Kea",
+              "value": 4207,
+              "tier": "yardstick",
+              "fact": "Measured from its base on the sea floor, Mauna Kea is taller than Everest."
+            },
+            {
+              "name": "Mauna Loa",
+              "value": 4169,
+              "tier": "yardstick"
+            },
+            {
+              "name": "Weisshorn",
+              "value": 4506,
+              "tier": "milestone"
+            },
+            {
+              "name": "Dom",
+              "value": 4545,
+              "tier": "milestone"
+            },
+            {
+              "name": "Mount Kinabalu",
+              "value": 4095,
+              "tier": "milestone",
+              "aliases": [
+                "kinabalu"
+              ]
+            },
+            {
+              "name": "Toubkal",
+              "value": 4167,
+              "tier": "milestone",
+              "aliases": [
+                "jebel toubkal"
+              ],
+              "fact": "Toubkal is the highest peak in North Africa."
+            },
+            {
+              "name": "Mount Meru",
+              "value": 4562,
+              "tier": "milestone"
+            },
+            {
+              "name": "Ras Dashen",
+              "value": 4550,
+              "tier": "milestone",
+              "aliases": [
+                "ras dejen"
+              ]
+            },
+            {
+              "name": "Mount Cook",
+              "value": 3724,
+              "aliases": [
+                "aoraki"
+              ]
+            },
+            {
+              "name": "Mount Olympus",
+              "value": 2918,
+              "aliases": [
+                "olympus"
+              ]
+            },
+            {
+              "name": "Ben Nevis",
+              "value": 1345
+            },
+            {
+              "name": "Kilimanjaro",
+              "value": 5895,
+              "aliases": [
+                "mount kilimanjaro"
+              ]
+            },
+            {
+              "name": "Mount Everest",
+              "value": 8849,
+              "aliases": [
+                "everest"
+              ]
+            },
+            {
+              "name": "Mount Etna",
+              "value": 3357,
+              "aliases": [
+                "etna"
+              ]
+            },
+            {
+              "name": "Mount St Helens",
+              "value": 2549,
+              "aliases": [
+                "st helens"
+              ]
+            },
+            {
+              "name": "Mount Hood",
+              "value": 3429
+            },
+            {
+              "name": "Mount Teide",
+              "value": 3715,
+              "aliases": [
+                "teide"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
