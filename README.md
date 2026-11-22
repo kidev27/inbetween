@@ -102,17 +102,23 @@ too, under the hand-written ones:
 
 | Catalog | Entries | Used by |
 |---|---|---|
-| `mountains` | ~22,800 | mountain heights |
-| `structures` | ~1,800 | towers, buildings, bridges, statues |
-| `inventions` | ~760 | invention years |
-| `waterfalls` | ~410 | waterfall heights |
+| `mountains` | ~24,900 | mountain heights |
+| `structures` | ~8,000 | towers, buildings, bridges, statues |
+| `animal-weights`, `bird-weights` | ~5,100, ~4,700 | animal and bird weights |
+| `instruments`, `fruits` | ~3,000, ~2,800 | A to Z prompts |
+| `inventions` | ~1,300 | invention years |
+| `waterfalls`, `vegetables`, `colours`, `sports` | 490-660 each | heights, A to Z prompts |
 | `countries` | ~200 | populations, countries A to Z |
-| `fruits`, `vegetables` | ~670, ~270 | A to Z prompts (kinds of fruit plus fruit plants) |
-| `colours`, `sports`, `instruments` | 230-850 each | A to Z prompts |
-| `animal-weights`, `bird-weights`, `animal-speeds` | ~180, 34, 75 | animal prompts (hand-written table) |
+| `animal-speeds` | 75 | animal speeds (hand-written only) |
+
+Like Krillion, the lists merge several sources: Wikidata (anything with a Wikipedia article;
+mountains need an English one), WordNet (an English dictionary, for names and synonyms), and the
+hand-written files below.
 
 - **Hand-written answers win.** A catalog entry sharing a name or alias with one (or with a limit)
   is the same thing and is skipped, so curated values, tiers and facts stay.
+- **Only the days being played are built.** A prompt's full list is merged when it is first
+  played and the last 21 are kept, so memory stays bounded (about 175 MB with three days).
 - **Rarity comes from fame**: how many Wikipedias have an article on the entry. 150 or more is a
   Pin, 60 a Ruler, 20 a Yardstick, anything less a Milestone.
 - **Typos** only match catalog names with 20 or more Wikipedias, so a slip can't land on an
