@@ -60,7 +60,9 @@ interface State {
   deadline: number | null
   /** The one free retry for an answer that is not on the list has been used. */
   retried: boolean
-  note: 'limit' | 'unknown' | null
+  note: 'limit' | 'unknown' | 'correction' | null
+  /** The full name a typo or partial answer matched; the player confirms it by sending it back. */
+  correction?: string
 }
 
 const text = (v: unknown, what: string): string => {
@@ -231,6 +233,8 @@ function apply(s: State, e: InBetweenEvent, p: Puzzle, now: number): State {
   const k = key(e.text)
   if (k && (k === q.lo.key || k === q.hi.key)) return { ...s, note: 'limit' }
   const m = match(q.index, e.text)
+  // Like Krillion: a typo or partial answer is filled in for the player to confirm or edit, never scored as typed.
+  if (m !== null && q.index.exact.get(k) !== m) return { ...s, note: 'correction', correction: q.index.answers[m].name }
   if (m !== null) return record(s, judge(q, m))
   if (!s.retried) return { ...s, retried: true, note: 'unknown' }
   return record(s, { outcome: 'unknown', points: 0, text: e.text.trim().slice(0, MAX_ANSWER_LENGTH) })
@@ -263,7 +267,7 @@ export const makeInbetween = (catalogs: Catalogs): ServerMode<Puzzle, State, InB
     return {
       total: PROMPTS,
       points: total(s),
-      current: q ? { ...ask(q, i), msLeft: s.deadline === null ? null : Math.max(0, s.deadline - now), note: s.note } : null,
+      current: q ? { ...ask(q, i), msLeft: s.deadline === null ? null : Math.max(0, s.deadline - now), note: s.note, correction: s.note === 'correction' ? s.correction ?? null : null } : null,
       answered: s.recs.map((r, j) => answered(p.prompts[j], j, r)),
     }
   },

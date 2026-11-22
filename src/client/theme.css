@@ -292,3 +292,8 @@ button:disabled { cursor: default; }
 
 /* The black tape case would vanish into a dark page: give it an edge. */
 :root[data-theme='dark'] .gcase, :root[data-theme='dark'] .bigtape .case { box-shadow: inset 0 0 0 2px #4a463a; }
+
+/* Krillion-style correction: the matched name is filled in to confirm or edit. */
+.msg.fix { color: var(--muted); font-weight: 700; }
+.msg.fix b { color: var(--you); }
+.msg.fix small { display: block; margin-top: 2px; font-weight: 400; }

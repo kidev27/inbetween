@@ -82,7 +82,7 @@ export interface InBetweenView {
   total: number
   points: number
   /** The next prompt, or null when the day is done. `msLeft` is null until its clock starts. */
-  current: (Ask & { msLeft: number | null; note: 'limit' | 'unknown' | null }) | null
+  current: (Ask & { msLeft: number | null; note: 'limit' | 'unknown' | 'correction' | null; correction: string | null }) | null
   answered: Answered[]
 }
 

@@ -206,6 +206,8 @@ function Ask(props: {
   const pull = useRef<Animation | null>(null)
   const begun = useRef(false)
   const [msg, setMsg] = useState<string | null>(null)
+  /** What the player typed and the name it matched, shown until they confirm or edit. */
+  const [fix, setFix] = useState<{ from: string; to: string } | null>(null)
   const [sending, setSending] = useState(false)
 
   // Words rise in, the limit cards swing in, the tape is pulled out of its case.
@@ -254,7 +256,11 @@ function Ask(props: {
     return () => (cancelAnimationFrame(raf), clearTimeout(retry))
   }, [ask.msLeft])
 
-  const onInput = () => input.current?.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.025)' }, { transform: 'scale(1)' }], { duration: 140 * motionScale() })
+  const onInput = () => {
+    setFix(null)
+    setMsg(null)
+    input.current?.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.025)' }, { transform: 'scale(1)' }], { duration: 140 * motionScale() })
+  }
 
   const submit = async (e: Event) => {
     e.preventDefault()
@@ -266,6 +272,13 @@ function Ask(props: {
     const v = await props.onAnswer(text)
     setSending(false)
     if (!v || v.answered.length > ask.index) return // recorded: the reveal takes over
+    const to = v.current?.note === 'correction' ? v.current.correction : null
+    if (to && input.current) {
+      input.current.value = to
+      input.current.focus()
+      return setFix({ from: text, to })
+    }
+    setFix(null)
     setMsg(v.current?.note === 'limit' ? 'That’s one of the limits. Name something in between.' : `“${text}” isn’t on our list. One more try.`)
     shake(form.current)
     input.current?.select()
@@ -289,7 +302,9 @@ function Ask(props: {
           maxLength={60} placeholder="Type your answer" aria-label="Your answer" onInput={onInput} />
         <button disabled={sending || ask.msLeft === null}>Measure</button>
       </form>
-      <p class="msg" role="status">{props.error ?? msg}</p>
+      {fix && !props.error
+        ? <p class="msg fix" role="status">“{fix.from}” → <b>“{fix.to}”</b><small>Submit again to confirm, or edit</small></p>
+        : <p class="msg" role="status">{props.error ?? msg}</p>}
     </main>
   )
 }

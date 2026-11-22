@@ -43,8 +43,10 @@ Environment variables: `PORT` (default 8789), `HOST` (default 127.0.0.1), `DB_PA
 ## How a day plays
 
 1. The prompt and its two limits appear; the server starts a 20-second clock when the tape is out.
-2. The answer is matched against the prompt's list by name, alias or a small typo. An answer that
-   isn't on the list gets one more try. Naming a limit itself doesn't count as a try.
+2. The answer is matched against the prompt's list by name or alias. A small typo or the start of
+   a name ("capyb") is filled in with the full name ("Capybara") to confirm or edit, like
+   Krillion's autocorrect. An answer that isn't on the list gets one more try. Naming a limit
+   itself doesn't count as a try.
 3. In range scores its tier. Just outside a limit (within 5%) is a **close call** for 10 cm.
    Further out, or out of time, scores 0.
 4. After seven prompts: the total, a spoiler-free share line, and streaks kept in the browser.
